@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://glorynest.github.io/Glory-Nest/sitemap.xml

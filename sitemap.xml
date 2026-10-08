@@ -1,14 +1,16 @@
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://glorynest.github.io/Glory-Nest/</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/romans-8-1.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/psalm-103-12.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/1-john-1-9.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/james-4-7.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/philippians-3-13-14.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/isaiah-43-18-19.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/about.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/privacy.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/terms.html</loc></url>
-  <url><loc>https://glorynest.github.io/Glory-Nest/pages/contact.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/romans-8-1.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/psalm-103-12.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/1-john-1-9.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/james-4-7.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/philippians-3-13-14.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/isaiah-43-18-19.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/about.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/privacy.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/terms.html</loc></url>
+  <url><loc>https://glorynest.github.io/Glory-Nest/contact.html</loc></url>
 </urlset>
+```

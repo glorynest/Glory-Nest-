@@ -1,283 +1,744 @@
-<script>
-const stories = [
-  ["Creation", "Genesis 1:1–31", "creation.png",
-   "God created the heavens, the earth, and everything in them.",
-   "God is the Creator of all things. His creation reminds us of His power and goodness.",
-   "What did God create?",
-   ["The heavens and the earth", "Only the stars", "Nothing"], 0],
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bible Journey | Glory Nest</title>
 
-  ["Noah's Ark", "Genesis 6–9", "noahs-ark.png",
-   "God instructed Noah to build an ark to save his family and the animals from the flood.",
-   "God is faithful to His promises and provides a way through difficult times.",
-   "What did God ask Noah to build?",
-   ["A palace", "An ark", "A tower"], 1],
+  <style>
+    :root {
+      --green: #315b43;
+      --green-light: #e8f0e8;
+      --cream: #faf7ef;
+      --text: #26352b;
+      --muted: #68766b;
+      --white: #ffffff;
+      --border: #dce5dc;
+    }
 
-  ["Abraham", "Genesis 12:1–9", "abraham.png",
-   "God called Abraham to leave his home and follow Him to a land He would show him.",
-   "Faith means trusting God even when we cannot see the whole journey.",
-   "What did God ask Abraham to do?",
-   ["Build a temple", "Leave his home", "Become a king"], 1],
+    * { box-sizing: border-box; }
 
-  ["Joseph", "Genesis 37–50", "joseph.png",
-   "Joseph faced betrayal and hardship, but God was with him and used his life to save many people.",
-   "God can work through difficult circumstances for a greater purpose.",
-   "Who sold Joseph into slavery?",
-   ["His brothers", "The Egyptians", "The soldiers"], 0],
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-  ["The Burning Bush", "Exodus 3", "burning-bush.png",
-   "God spoke to Moses from a burning bush and called him to lead the Israelites out of Egypt.",
-   "God can call us to meaningful work even when we feel unqualified.",
-   "Where did God speak to Moses?",
-   ["A palace", "A burning bush", "A river"], 1],
+    header {
+      text-align: center;
+      padding: 48px 20px 35px;
+      color: white;
+      background: linear-gradient(135deg, #315b43, #719879);
+    }
 
-  ["The Red Sea", "Exodus 14", "red-sea.png",
-   "God parted the Red Sea so the Israelites could escape from Egypt.",
-   "When the way seems impossible, God can make a way forward.",
-   "What sea did the Israelites cross?",
-   ["The Dead Sea", "The Red Sea", "The Mediterranean Sea"], 1],
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
 
-  ["The Ten Commandments", "Exodus 20", "ten-commandments.png",
-   "God gave Moses commandments to guide His people in how to live.",
-   "God's guidance helps us live with love, wisdom, and faithfulness.",
-   "Who received the commandments from God?",
-   ["Aaron", "Moses", "Joshua"], 1],
+    header p {
+      max-width: 650px;
+      margin: auto;
+      opacity: .95;
+    }
 
-  ["The Walls of Jericho", "Joshua 6", "jericho.png",
-   "The walls of Jericho fell after the Israelites followed God's instructions.",
-   "Trusting God's direction matters, even when it seems unusual.",
-   "What happened to Jericho's walls?",
-   ["They fell", "They grew taller", "They turned to gold"], 0],
+    main {
+      width: min(1100px, 92%);
+      margin: 30px auto 60px;
+    }
 
-  ["David and Goliath", "1 Samuel 17", "david-goliath.png",
-   "David trusted God and defeated the giant Goliath with a sling and a stone.",
-   "Courage comes from trusting God, not from our size or strength.",
-   "How did David defeat Goliath?",
-   ["With a sword", "With a sling and stone", "With a bow"], 1],
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
 
-  ["Daniel and the Lions", "Daniel 6", "daniel-lions.png",
-   "Daniel continued praying to God and was protected in the lions' den.",
-   "Stay faithful to God, even when doing so is difficult.",
-   "Where was Daniel thrown?",
-   ["A furnace", "A prison ship", "A lions' den"], 2],
+    input, select, textarea, button {
+      font: inherit;
+    }
 
-  ["Esther", "Esther 4–7", "esther.png",
-   "Queen Esther courageously spoke up to protect her people.",
-   "God can use our position and courage to help others.",
-   "What did Esther help protect?",
-   ["Her people", "A treasure", "A city wall"], 0],
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      color: var(--text);
+    }
 
-  ["Jonah", "Jonah 1–4", "jonah.png",
-   "Jonah ran from God's instruction, but God gave him another chance to obey.",
-   "God is merciful and gives us opportunities to turn back to Him.",
-   "What swallowed Jonah?",
-   ["A whale-like great fish", "A lion", "A crocodile"], 0],
+    .toolbar input { flex: 2 1 250px; }
+    .toolbar select { flex: 1 1 180px; }
 
-  ["The Birth of Jesus", "Luke 2:1–20", "jesus-birth.png",
-   "Jesus was born in Bethlehem and laid in a manger.",
-   "Jesus' birth reminds us that God's greatest gifts can come in humble ways.",
-   "Where was Jesus born?",
-   ["Jerusalem", "Bethlehem", "Nazareth"], 1],
+    .progress {
+      padding: 14px 18px;
+      background: var(--green-light);
+      border-radius: 12px;
+      margin-bottom: 22px;
+    }
 
-  ["Jesus Calms the Storm", "Mark 4:35–41", "calms-storm.png",
-   "Jesus calmed a fierce storm while His disciples were afraid.",
-   "Even in life's storms, we can trust Jesus to be with us.",
-   "What did Jesus calm?",
-   ["A storm", "A fire", "An earthquake"], 0],
+    .progress-track {
+      height: 9px;
+      background: #d1dfd2;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
 
-  ["Feeding the Five Thousand", "John 6:1–14", "feeding-5000.png",
-   "Jesus fed a large crowd with five loaves and two fish.",
-   "God can use what we have, even when it seems small.",
-   "What food was shared?",
-   ["Five loaves and two fish", "Ten baskets of bread", "A feast"], 0],
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: var(--green);
+      transition: width .25s;
+    }
 
-  ["The Good Samaritan", "Luke 10:25–37", "good-samaritan.png",
-   "A Samaritan helped a wounded man when others passed him by.",
-   "Loving our neighbor means showing compassion through action.",
-   "Who helped the wounded man?",
-   ["A priest", "A Samaritan", "A soldier"], 1],
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
 
-  ["The Prodigal Son", "Luke 15:11–32", "prodigal-son.png",
-   "A father welcomed his lost son home with love and forgiveness.",
-   "God welcomes us back when we turn to Him.",
-   "How did the father respond when his son returned?",
-   ["He welcomed him", "He sent him away", "He ignored him"], 0],
+    .story-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px #26352b0b;
+    }
 
-  ["The Triumphal Entry", "Matthew 21:1–11", "triumphal-entry.png",
-   "Jesus entered Jerusalem while crowds welcomed Him with palm branches.",
-   "Jesus is the King who comes with humility and peace.",
-   "What did Jesus ride into Jerusalem?",
-   ["A horse", "A donkey", "A chariot"], 1],
+    .story-card img {
+      display: block;
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      background: var(--green-light);
+    }
 
-  ["The Crucifixion", "Luke 23", "crucifixion.png",
-   "Jesus gave His life on the cross for the forgiveness of sins.",
-   "The cross reveals God's deep love and the hope of forgiveness.",
-   "Where was Jesus crucified?",
-   ["On a cross", "In a palace", "In a temple"], 0],
+    .card-content { padding: 17px; }
 
-  ["The Resurrection", "Luke 24", "resurrection.png",
-   "On the third day, Jesus rose from the dead.",
-   "The resurrection gives believers hope and the promise of new life.",
-   "What happened on the third day?",
-   ["Jesus rose from the dead", "The disciples left", "The temple was built"], 0]
-];
+    .card-content h2 {
+      margin: 0 0 5px;
+      font-size: 1.2rem;
+    }
 
-const KEY = "gloryNestBibleJourney";
-let state = JSON.parse(localStorage.getItem(KEY) || "{}");
-const E = id => document.getElementById(id);
+    .reference {
+      color: var(--green);
+      font-weight: bold;
+      font-size: .9rem;
+    }
 
-function save() {
-  localStorage.setItem(KEY, JSON.stringify(state));
-}
+    .card-content p {
+      color: var(--muted);
+      margin: 10px 0 15px;
+    }
 
-function render() {
-const term = (E("search")?.value || "").toLowerCase();
-const filter = E("filter")?.value || "all";
-  E("stories").innerHTML = stories
-    .map((s, i) => ({ s, i }))
-    .filter(({ s, i }) =>
-      s.join(" ").toLowerCase().includes(term) &&
-      (
-        filter === "all" ||
-        (filter === "done" && state[i]?.done) ||
-        (filter === "todo" && !state[i]?.done)
-      )
-    )
-    .map(({ s, i }) => `
-      <article class="story" onclick="openStory(${i})">
-        <div class="art">
-          <img
-            src="images/bible-journey/${s[2]}"
-            alt="${s[0]}"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-        </div>
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        <small>${String(i + 1).padStart(2, "0")} · ${s[1]}</small>
-        <h3>${s[0]}</h3>
-        <div>${s[3]}</div>
+    button:focus-visible {
+      outline: 3px solid #9fc4a4;
+      outline-offset: 2px;
+    }
 
-        <div class="bar">
-          <span style="width:${state[i]?.done ? 100 : 0}%"></span>
-        </div>
-      </article>
-    `)
-    .join("");
-}
+    .primary {
+      background: var(--green);
+      color: white;
+    }
 
-function openStory(i) {
-  const s = stories[i];
-  const d = state[i] || {};
+    .secondary {
+      background: var(--green-light);
+      color: var(--green);
+    }
 
-  E("detail").style.display = "block";
+    .story-card button { width: 100%; }
 
-  E("detail").innerHTML = `
-    <button onclick="closeStory()">← All stories</button>
+    #detail {
+      display: none;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(18px, 4vw, 30px);
+      margin-bottom: 25px;
+    }
 
-    <div class="detailart">
-      <img
-        src="images/bible-journey/${s[2]}"
-        alt="${s[0]}"
-        loading="lazy"
-        onerror="this.style.display='none'"
+    #detail img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: var(--green-light);
+      margin: 15px 0;
+    }
+
+    #detail h2 { margin-top: 10px; }
+
+    .reflection, .quiz-box {
+      padding: 18px;
+      border-radius: 12px;
+      background: #f3f7f1;
+      margin: 20px 0;
+    }
+
+    .quiz-option {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 12px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .quiz-option input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    #quiz-feedback {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 35px;
+      color: var(--muted);
+      background: white;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 500px) {
+      header { padding: 35px 16px; }
+      .toolbar { display: grid; }
+      .detail-actions button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🌿 Bible Journey</h1>
+    <p>
+      Walk through Scripture, one story at a time.
+      Read, reflect, and discover how God’s Word speaks into everyday life.
+    </p>
+  </header>
+
+  <main>
+    <div class="progress">
+      <strong id="progress-text">Your journey: 0 of 20 stories completed</strong>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search stories, Bible references, or themes..."
+        aria-label="Search Bible stories"
       >
+
+      <select id="filter" aria-label="Filter stories">
+        <option value="all">All stories</option>
+        <option value="done">Completed</option>
+        <option value="todo">Not completed</option>
+      </select>
     </div>
 
-    <small>${s[1]}</small>
-    <h2>${s[0]}</h2>
-    <p>${s[3]}</p>
+    <section id="detail" aria-live="polite"></section>
+    <section id="stories" class="grid"></section>
 
-    <div class="verse">
-      <b>Reflection</b><br>
-      ${s[4]}
-    </div>
+    <p class="muted">
+      Your progress and reflections are saved locally on this device.
+    </p>
+  </main>
 
-    <label><b>Your reflection</b></label>
-    <textarea id="note" placeholder="What stands out to you?">${d.note || ""}</textarea>
+  <script>
+    "use strict";
 
-    <div class="quiz">
-      <b>Quick check</b>
-      <p>${s[5]}</p>
+    const stories = [
+      {
+        id: 1,
+        title: "Creation",
+        reference: "Genesis 1–2",
+        image: "creation.png",
+        description: "God creates the heavens, the earth, and all living things.",
+        reflection: "God is the Creator of all things. What part of creation reminds you of His goodness?",
+        question: "What did God create on the first day?",
+        options: ["The animals", "Light", "The sun and moon", "The trees"],
+        answer: 1
+      },
+      {
+        id: 2,
+        title: "Noah’s Ark",
+        reference: "Genesis 6–9",
+        image: "noahs-ark.png",
+        description: "Noah trusts God and builds an ark to preserve life through the flood.",
+        reflection: "Noah obeyed God even when it was difficult. Where can you practice faithful obedience?",
+        question: "What sign did God give as a covenant after the flood?",
+        options: ["A rainbow", "A burning bush", "A dove", "A star"],
+        answer: 0
+      },
+      {
+        id: 3,
+        title: "God Calls Abraham",
+        reference: "Genesis 12, 15, 17",
+        image: "abraham.png",
+        description: "God calls Abraham to leave his home and promises to bless him.",
+        reflection: "Faith often means trusting God before we know the whole plan.",
+        question: "What did God promise Abraham?",
+        options: ["A palace", "A great nation", "A kingdom in Egypt", "A large army"],
+        answer: 1
+      },
+      {
+        id: 4,
+        title: "Joseph’s Journey",
+        reference: "Genesis 37–50",
+        image: "joseph.png",
+        description: "Joseph faces betrayal and hardship, but God uses his life to save many people.",
+        reflection: "God can work through difficult seasons. What hardship can you place in His hands?",
+        question: "What position did Joseph receive in Egypt?",
+        options: ["Pharaoh’s chief guard", "A shepherd", "A ruler under Pharaoh", "A fisherman"],
+        answer: 2
+      },
+      {
+        id: 5,
+        title: "The Burning Bush",
+        reference: "Exodus 3–4",
+        image: "burning-bush.png",
+        description: "God speaks to Moses from a burning bush and calls him to lead Israel.",
+        reflection: "God can call ordinary people to do meaningful things. What might He be asking you to do?",
+        question: "Who spoke to Moses from the burning bush?",
+        options: ["An angel only", "God", "Aaron", "Pharaoh"],
+        answer: 1
+      },
+      {
+        id: 6,
+        title: "Crossing the Red Sea",
+        reference: "Exodus 14",
+        image: "red-sea.png",
+        description: "God makes a way for the Israelites to cross the sea and escape Egypt.",
+        reflection: "When you feel trapped, remember that God is able to make a way.",
+        question: "What happened when Moses stretched out his hand over the sea?",
+        options: ["The sea parted", "The sea became a mountain", "It began to snow", "The Israelites returned to Egypt"],
+        answer: 0
+      },
+      {
+        id: 7,
+        title: "The Ten Commandments",
+        reference: "Exodus 19–20",
+        image: "ten-commandments.png",
+        description: "God gives His people commandments to guide their lives and worship.",
+        reflection: "God’s instructions help us live with love, faithfulness, and wisdom.",
+        question: "Where did Moses receive the commandments?",
+        options: ["Mount Carmel", "Mount Sinai", "Mount Zion", "The Mount of Olives"],
+        answer: 1
+      },
+      {
+        id: 8,
+        title: "The Walls of Jericho",
+        reference: "Joshua 6",
+        image: "jericho.png",
+        description: "The Israelites follow God’s instructions, and the walls of Jericho fall.",
+        reflection: "Faithful obedience can look unusual. How can you trust God’s direction today?",
+        question: "What happened to Jericho’s walls?",
+        options: ["They were rebuilt", "They were covered by water", "They fell", "They turned to gold"],
+        answer: 2
+      },
+      {
+        id: 9,
+        title: "David and Goliath",
+        reference: "1 Samuel 17",
+        image: "david-goliath.png",
+        description: "Young David trusts God and faces the giant Goliath.",
+        reflection: "The size of a challenge does not limit God’s power. What fear can you face with faith?",
+        question: "What did David use to strike Goliath?",
+        options: ["A sword", "A sling and stone", "A spear", "A bow"],
+        answer: 1
+      },
+      {
+        id: 10,
+        title: "Daniel in the Lions’ Den",
+        reference: "Daniel 6",
+        image: "daniel-lions.png",
+        description: "Daniel continues praying to God and is protected in the lions’ den.",
+        reflection: "Daniel remained faithful under pressure. How can you keep prayer central in your life?",
+        question: "Why was Daniel thrown into the lions’ den?",
+        options: ["He refused to stop praying to God", "He stole from the king", "He left the kingdom", "He fought the soldiers"],
+        answer: 0
+      },
+      {
+        id: 11,
+        title: "Esther’s Courage",
+        reference: "Esther 4–7",
+        image: "esther.png",
+        description: "Queen Esther courageously speaks up to protect her people.",
+        reflection: "You may be placed where your courage can help someone else. Who needs you to speak up?",
+        question: "Why did Esther approach the king?",
+        options: ["To ask for a new palace", "To protect her people", "To leave the kingdom", "To become a soldier"],
+        answer: 1
+      },
+      {
+        id: 12,
+        title: "Jonah and the Great Fish",
+        reference: "Jonah 1–4",
+        image: "jonah.png",
+        description: "Jonah runs from God’s call, but God gives him another opportunity.",
+        reflection: "God is merciful and patient. Is there an instruction you have been avoiding?",
+        question: "Where did Jonah go after being thrown into the sea?",
+        options: ["A cave", "A palace", "Inside a great fish", "A desert"],
+        answer: 2
+      },
+      {
+        id: 13,
+        title: "The Birth of Jesus",
+        reference: "Luke 2:1–20",
+        image: "jesus-birth.png",
+        description: "Jesus is born in Bethlehem, and angels announce His birth to shepherds.",
+        reflection: "Jesus came into the world in humility. How can you welcome Him into your daily life?",
+        question: "Where was Jesus born?",
+        options: ["Jerusalem", "Bethlehem", "Nazareth", "Capernaum"],
+        answer: 1
+      },
+      {
+        id: 14,
+        title: "Jesus Calms the Storm",
+        reference: "Mark 4:35–41",
+        image: "calms-storm.png",
+        description: "Jesus calms a storm and teaches His disciples to trust Him.",
+        reflection: "Jesus is present even in life’s storms. What worry can you bring to Him?",
+        question: "What did Jesus say to the storm?",
+        options: ["Peace, be still", "Come back tomorrow", "Follow the disciples", "Go to the mountain"],
+        answer: 0
+      },
+      {
+        id: 15,
+        title: "Feeding the Five Thousand",
+        reference: "John 6:1–14",
+        image: "feeding-5000.png",
+        description: "Jesus uses a small meal to feed a large crowd.",
+        reflection: "God can use what you have, even when it seems small. What can you offer today?",
+        question: "What food was brought to Jesus?",
+        options: ["Seven loaves and fish", "Five loaves and two fish", "Bread and grapes", "Manna and water"],
+        answer: 1
+      },
+      {
+        id: 16,
+        title: "The Good Samaritan",
+        reference: "Luke 10:25–37",
+        image: "good-samaritan.png",
+        description: "A Samaritan helps a wounded man when others pass him by.",
+        reflection: "Love is shown through action. Who could use your kindness today?",
+        question: "Who helped the wounded man?",
+        options: ["A priest", "A Levite", "A Samaritan", "A soldier"],
+        answer: 2
+      },
+      {
+        id: 17,
+        title: "The Prodigal Son",
+        reference: "Luke 15:11–32",
+        image: "prodigal-son.png",
+        description: "A father welcomes his returning son with compassion and forgiveness.",
+        reflection: "God welcomes those who turn back to Him. Is there something you need to bring to Him?",
+        question: "How did the father respond when his son returned?",
+        options: ["He welcomed him with compassion", "He sent him away", "He ignored him", "He imprisoned him"],
+        answer: 0
+      },
+      {
+        id: 18,
+        title: "The Triumphal Entry",
+        reference: "Matthew 21:1–11",
+        image: "triumphal-entry.png",
+        description: "Jesus enters Jerusalem, and the crowd welcomes Him with praise.",
+        reflection: "Make room for Jesus in your heart. What does honoring Him look like today?",
+        question: "What animal did Jesus ride into Jerusalem?",
+        options: ["A horse", "A donkey", "A camel", "A chariot"],
+        answer: 1
+      },
+      {
+        id: 19,
+        title: "The Crucifixion",
+        reference: "Luke 23",
+        image: "crucifixion.png",
+        description: "Jesus gives His life on the cross for the forgiveness of sins.",
+        reflection: "Remember the depth of Jesus’ love and the grace offered through Him.",
+        question: "Where was Jesus crucified?",
+        options: ["Bethlehem", "Mount Sinai", "Golgotha", "Jericho"],
+        answer: 2
+      },
+      {
+        id: 20,
+        title: "The Resurrection",
+        reference: "Luke 24:1–12",
+        image: "resurrection.png",
+        description: "Jesus rises from the dead, bringing hope and the promise of new life.",
+        reflection: "The resurrection reminds us that hope is alive in Jesus. Where do you need renewed hope?",
+        question: "What did the women discover at the tomb?",
+        options: ["The stone was rolled away and the tomb was empty", "The tomb was sealed", "The disciples were waiting inside", "The tomb had moved"],
+        answer: 0
+      }
+    ];
 
-      ${s[6].map((o, j) => `
-        <label>
-          <input
-            type="radio"
-            name="ans"
-            value="${j}"
-            ${d.answer === j ? "checked" : ""}
-          >
-          ${o}
-        </label>
-      `).join("")}
+    const STORAGE_KEY = "gloryNestBibleJourney";
 
-      <p id="feedback">
-        ${d.answer !== undefined
-          ? (d.answer === s[7] ? "Correct!" : "Try again — read the story once more.")
-          : ""}
-      </p>
+    const searchInput = document.getElementById("search");
+    const filterSelect = document.getElementById("filter");
+    const storiesSection = document.getElementById("stories");
+    const detailSection = document.getElementById("detail");
+    const progressText = document.getElementById("progress-text");
+    const progressFill = document.getElementById("progress-fill");
 
-      <button onclick="check(${i})">Check answer</button>
-    </div>
+    let savedData = loadSavedData();
 
-    <button onclick="complete(${i})">
-      ${d.done ? "Completed ✓" : "Mark story complete"}
-    </button>
+    function loadSavedData() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return saved && typeof saved === "object" ? saved : {};
+      } catch (error) {
+        return {};
+      }
+    }
 
-    <button onclick="saveNote(${i})">Save reflection</button>
-  `;
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+      } catch (error) {
+        alert("Your browser could not save this progress. Please check your browser storage settings.");
+      }
+    }
 
-  E("detail").scrollIntoView({ behavior: "smooth" });
-}
+    function isCompleted(storyId) {
+      return Boolean(savedData[storyId] && savedData[storyId].completed);
+    }
 
-function closeStory() {
-  E("detail").style.display = "none";
-}
+    function updateProgress() {
+      const completedCount = stories.filter(story => isCompleted(story.id)).length;
+      const percentage = (completedCount / stories.length) * 100;
 
-function check(i) {
-  const v = document.querySelector('input[name="ans"]:checked');
+      progressText.textContent =
+        `Your journey: ${completedCount} of ${stories.length} stories completed`;
 
-  if (!v) {
-    E("feedback").textContent = "Choose an answer first.";
-    return;
-  }
+      progressFill.style.width = `${percentage}%`;
+    }
 
-  state[i] = state[i] || {};
-  state[i].answer = Number(v.value);
+    function renderStories() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      const filterValue = filterSelect.value;
 
-  E("feedback").textContent =
-    Number(v.value) === stories[i][7]
-      ? "Correct!"
-      : "Try again — read the story once more.";
+      const filteredStories = stories.filter(story => {
+        const matchesSearch =
+          story.title.toLowerCase().includes(searchTerm) ||
+          story.reference.toLowerCase().includes(searchTerm) ||
+          story.description.toLowerCase().includes(searchTerm);
 
-  save();
-}
+        const matchesFilter =
+          filterValue === "all" ||
+          (filterValue === "done" && isCompleted(story.id)) ||
+          (filterValue === "todo" && !isCompleted(story.id));
 
-function complete(i) {
-  state[i] = state[i] || {};
-  state[i].done = true;
-  save();
-  render();
-  openStory(i);
-}
+        return matchesSearch && matchesFilter;
+      });
 
-function saveNote(i) {
-  state[i] = state[i] || {};
-  state[i].note = E("note").value;
-  save();
-  E("feedback").textContent = "Reflection saved on this device.";
-}
+      storiesSection.innerHTML = "";
 
-const searchBox = E("search");
-const filterBox = E("filter");
+      if (filteredStories.length === 0) {
+        storiesSection.innerHTML =
+          '<div class="empty">No stories found. Try another search.</div>';
+        return;
+      }
 
-if (searchBox) {
-  searchBox.addEventListener("input", render);
-}
+      filteredStories.forEach(story => {
+        const card = document.createElement("article");
+        card.className = "story-card";
 
-if (filterBox) {
-  filterBox.addEventListener("change", render);
-}
+        const image = document.createElement("img");
+        image.src = `images/bible-journey/${story.image}`;
+        image.alt = story.title;
+        image.loading = "lazy";
+        image.onerror = function () {
+          this.style.display = "none";
+        };
 
-render();
-</script>
+        const content = document.createElement("div");
+        content.className = "card-content";
+
+        const title = document.createElement("h2");
+        title.textContent = `${isCompleted(story.id) ? "✓ " : ""}${story.title}`;
+
+        const reference = document.createElement("div");
+        reference.className = "reference";
+        reference.textContent = story.reference;
+
+        const description = document.createElement("p");
+        description.textContent = story.description;
+
+        const button = document.createElement("button");
+        button.className = "primary";
+        button.textContent = "Read Story";
+        button.addEventListener("click", () => openStory(story.id));
+
+        content.append(title, reference, description, button);
+        card.append(image, content);
+        storiesSection.appendChild(card);
+      });
+    }
+
+    function openStory(storyId) {
+      const story = stories.find(item => item.id === storyId);
+      if (!story) return;
+
+      const previousData = savedData[storyId] || {};
+      const reflectionText = previousData.reflection || "";
+
+      detailSection.style.display = "block";
+
+      detailSection.innerHTML = `
+        <button class="secondary" id="back-button">← Back to stories</button>
+
+        <h2>${escapeHTML(story.title)}</h2>
+        <div class="reference">${escapeHTML(story.reference)}</div>
+
+        <img
+          src="images/bible-journey/${escapeHTML(story.image)}"
+          alt="${escapeHTML(story.title)}"
+          id="detail-image"
+        >
+
+        <p>${escapeHTML(story.description)}</p>
+
+        <div class="reflection">
+          <h3>🌿 Reflection</h3>
+          <p>${escapeHTML(story.reflection)}</p>
+          <label for="reflection-note"><strong>Your personal reflection</strong></label>
+          <textarea
+            id="reflection-note"
+            rows="4"
+            placeholder="Write your thoughts or prayer here..."
+          >${escapeHTML(reflectionText)}</textarea>
+          <button class="secondary" id="save-reflection">Save Reflection</button>
+        </div>
+
+        <div class="quiz-box">
+          <h3>📖 Quick Quiz</h3>
+          <p><strong>${escapeHTML(story.question)}</strong></p>
+
+          <div id="quiz-options">
+            ${story.options.map((option, index) => `
+              <label class="quiz-option">
+                <input type="radio" name="quiz-answer" value="${index}">
+                ${escapeHTML(option)}
+              </label>
+            `).join("")}
+          </div>
+
+          <button class="primary" id="check-answer">Check Answer</button>
+          <p id="quiz-feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="detail-actions">
+          <button class="primary" id="complete-button">
+            ${isCompleted(story.id) ? "✓ Completed — Mark Incomplete" : "Mark as Completed"}
+          </button>
+        </div>
+      `;
+
+      const detailImage = document.getElementById("detail-image");
+      detailImage.onerror = function () {
+        this.style.display = "none";
+      };
+
+      document.getElementById("back-button").addEventListener("click", closeStory);
+
+      document.getElementById("save-reflection").addEventListener("click", () => {
+        savedData[story.id] = savedData[story.id] || {};
+        savedData[story.id].reflection =
+          document.getElementById("reflection-note").value;
+
+        saveData();
+        alert("Your reflection has been saved.");
+      });
+
+      document.getElementById("check-answer").addEventListener("click", () => {
+        const selected = document.querySelector('input[name="quiz-answer"]:checked');
+        const feedback = document.getElementById("quiz-feedback");
+
+        if (!selected) {
+          feedback.textContent = "Please choose an answer first.";
+          feedback.style.color = "#8a5a00";
+          return;
+        }
+
+        if (Number(selected.value) === story.answer) {
+          feedback.textContent = "Correct! Well done. 🌿";
+          feedback.style.color = "#315b43";
+        } else {
+          feedback.textContent = "Not quite. Read the story again and try once more.";
+          feedback.style.color = "#a33a32";
+        }
+      });
+
+      document.getElementById("complete-button").addEventListener("click", () => {
+        savedData[story.id] = savedData[story.id] || {};
+        savedData[story.id].completed = !savedData[story.id].completed;
+
+        saveData();
+        updateProgress();
+        renderStories();
+        openStory(story.id);
+      });
+
+      detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function closeStory() {
+      detailSection.style.display = "none";
+      detailSection.innerHTML = "";
+      storiesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, character => {
+        const replacements = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+
+        return replacements[character];
+      });
+    }
+
+    searchInput.addEventListener("input", renderStories);
+    filterSelect.addEventListener("change", renderStories);
+
+    updateProgress();
+    renderStories();
+  </script>
+</body>
+</html>

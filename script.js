@@ -1,60 +1,68 @@
-
+```javascript
 const verses = [
   {
     id: "romans8",
     topic: "Forgiveness",
     ref: "Romans 8:1",
     text: "So now there is no condemnation for those who belong to Christ Jesus.",
-    hindi: "इसलिए अब जो मसीह यीशु में हैं, उन पर दण्ड की आज्ञा नहीं।"
+    hindi: "इसलिए अब जो मसीह यीशु में हैं, उन पर दण्ड की आज्ञा नहीं।",
+    odia: "ଏଣୁ ଯେଉଁମାନେ ଖ୍ରୀଷ୍ଟ ଯୀଶୁଙ୍କଠାରେ ଅଛନ୍ତି, ସେମାନଙ୍କ ପାଇଁ ଆଉ ଦଣ୍ଡାଜ୍ଞା ନାହିଁ।"
   },
   {
     id: "psalm103",
     topic: "Forgiveness",
     ref: "Psalm 103:12",
     text: "He has removed our sins as far from us as the east is from the west.",
-    hindi: "उसने हमारे अपराधों को हमसे उतनी दूर कर दिया है, जितनी दूर पूर्व पश्चिम से है।"
+    hindi: "उसने हमारे अपराधों को हमसे उतनी दूर कर दिया है, जितनी दूर पूर्व पश्चिम से है।",
+    odia: "ପୂର୍ବଠାରୁ ପଶ୍ଚିମ ଯେତେ ଦୂର, ସେ ଆମ୍ଭମାନଙ୍କଠାରୁ ଆମ୍ଭମାନଙ୍କ ଅପରାଧ ସେତେ ଦୂର କରିଅଛନ୍ତି।"
   },
   {
     id: "john1",
     topic: "Forgiveness",
     ref: "1 John 1:9",
     text: "If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.",
-    hindi: "यदि हम अपने पापों को मान लें, तो वह हमारे पापों को क्षमा करने और हमें सब अधर्म से शुद्ध करने में विश्वासयोग्य और धर्मी है।"
+    hindi: "यदि हम अपने पापों को मान लें, तो वह हमारे पापों को क्षमा करने और हमें सब अधर्म से शुद्ध करने में विश्वासयोग्य और धर्मी है।",
+    odia: "ଯଦି ଆମ୍ଭେମାନେ ଆପଣା ପାପ ସ୍ୱୀକାର କରୁ, ତେବେ ସେ ଆମ୍ଭମାନଙ୍କ ପାପ କ୍ଷମା କରିବାକୁ ଓ ସମସ୍ତ ଅଧର୍ମରୁ ଶୁଦ୍ଧ କରିବାକୁ ବିଶ୍ୱସ୍ତ ଓ ଧାର୍ମିକ ଅଟନ୍ତି।"
   },
   {
     id: "james4",
     topic: "Temptation",
     ref: "James 4:7",
     text: "Submit yourselves therefore to God. Resist the devil, and he will flee from you.",
-    hindi: "इसलिए परमेश्वर के अधीन हो जाओ; शैतान का सामना करो, तो वह तुम्हारे पास से भाग जाएगा।"
+    hindi: "इसलिए परमेश्वर के अधीन हो जाओ; शैतान का सामना करो, तो वह तुम्हारे पास से भाग जाएगा।",
+    odia: "ଅତଏବ ତୁମ୍ଭେମାନେ ଈଶ୍ୱରଙ୍କର ବଶୀଭୂତ ହୁଅ; ଶୟତାନର ପ୍ରତିରୋଧ କର, ତାହାହେଲେ ସେ ତୁମ୍ଭମାନଙ୍କଠାରୁ ପଳାଇଯିବ।"
   },
   {
     id: "phil3",
     topic: "Moving Forward",
     ref: "Philippians 3:13–14",
     text: "Forgetting what is behind and straining toward what is ahead, I press on toward the goal.",
-    hindi: "पीछे की बातें भूलकर और आगे की बातों की ओर बढ़कर, मैं लक्ष्य की ओर दौड़ा चला जाता हूँ।"
+    hindi: "पीछे की बातें भूलकर और आगे की बातों की ओर बढ़कर, मैं लक्ष्य की ओर दौड़ा चला जाता हूँ।",
+    odia: "ପଛରେ ଥିବା ବିଷୟସବୁ ଭୁଲି ଆଗରେ ଥିବା ବିଷୟସବୁ ଆଡ଼କୁ ଅଗ୍ରସର ହୋଇ, ମୁଁ ଲକ୍ଷ୍ୟ ଆଡ଼କୁ ଦୌଡ଼ୁଅଛି।"
   },
   {
     id: "isaiah43",
     topic: "New Beginning",
     ref: "Isaiah 43:18–19",
     text: "Forget the former things; do not dwell on the past. See, I am doing a new thing!",
-    hindi: "पहिली बातों को स्मरण मत करो, और पुरानी बातों पर मन मत लगाओ। देखो, मैं एक नई बात करता हूँ!"
+    hindi: "पहिली बातों को स्मरण मत करो, और पुरानी बातों पर मन मत लगाओ। देखो, मैं एक नई बात करता हूँ!",
+    odia: "ପୂର୍ବ କଥାସବୁ ସ୍ମରଣ କର ନାହିଁ, ପୁରାତନ ବିଷୟସବୁ ମନେ ରଖ ନାହିଁ। ଦେଖ, ମୁଁ ଏକ ନୂତନ କାର୍ଯ୍ୟ କରୁଅଛି!"
   },
   {
     id: "psalm23",
     topic: "Strength",
     ref: "Psalm 23:1",
     text: "The Lord is my shepherd; I shall not want.",
-    hindi: "यहोवा मेरा चरवाहा है; मुझे किसी बात की घटी न होगी।"
+    hindi: "यहोवा मेरा चरवाहा है; मुझे किसी बात की घटी न होगी।",
+    odia: "ସଦାପ୍ରଭୁ ମୋହର ମେଷପାଳକ; ମୋହର ଅଭାବ ହେବ ନାହିଁ।"
   },
   {
     id: "phil4",
     topic: "Peace",
     ref: "Philippians 4:6–7",
     text: "Do not be anxious about anything, but in every situation, by prayer and petition, present your requests to God.",
-    hindi: "किसी भी बात की चिन्ता मत करो; परन्तु हर बात में प्रार्थना और विनती के द्वारा अपने निवेदन परमेश्वर के सम्मुख उपस्थित करो।"
+    hindi: "किसी भी बात की चिन्ता मत करो; परन्तु हर बात में प्रार्थना और विनती के द्वारा अपने निवेदन परमेश्वर के सम्मुख उपस्थित करो।",
+    odia: "କୌଣସି ବିଷୟରେ ଚିନ୍ତିତ ହୁଅ ନାହିଁ; କିନ୍ତୁ ସବୁ ବିଷୟରେ ପ୍ରାର୍ଥନା ଓ ନିବେଦନ ଦ୍ୱାରା ତୁମ୍ଭମାନଙ୍କର ଅନୁରୋଧ ଈଶ୍ୱରଙ୍କ ନିକଟରେ ଜଣାଅ।"
   }
 ];
 
@@ -88,10 +96,25 @@ const hindiPrayers = [
   }
 ];
 
+const odiaPrayers = [
+  {
+    title: "ଯେତେବେଳେ ପ୍ରଲୋଭନ ଶକ୍ତିଶାଳୀ ଲାଗେ",
+    text: "ହେ ପ୍ରଭୁ ପରମେଶ୍ୱର, ଏହି ସମୟରେ ମୁଁ ଦୁର୍ବଳ ଅନୁଭବ କରୁଛି ଏବଂ ପ୍ରଲୋଭନ ବହୁତ ଶକ୍ତିଶାଳୀ। ମୁଁ ଏଥିରେ ପଡ଼ିବାକୁ ଚାହେଁ ନାହିଁ। ମୋତେ ତୁମ୍ଭର ଶକ୍ତି ଦିଅ। ଏହି ପ୍ରଲୋଭନଠାରୁ ଦୂରେଇ ଯିବାକୁ ମୋତେ ସାହାଯ୍ୟ କର। ଯୀଶୁଙ୍କ ନାମରେ, ଆମେନ୍।"
+  },
+  {
+    title: "ଏକ ନୂତନ ଆରମ୍ଭ ପାଇଁ",
+    text: "ହେ ପିତା, ମୁଁ ମୋର ଅତୀତକୁ ତୁମ୍ଭଙ୍କ ନିକଟରେ ଆଣୁଛି, କିଛି ଲୁଚାଉ ନାହିଁ। ତୁମ୍ଭର ଦୟା ପାଇଁ ଧନ୍ୟବାଦ। ଗତକାଲିକୁ ପଛରେ ଛାଡ଼ି ତୁମ୍ଭେ ମୋତେ ଦେଇଥିବା ନୂତନ ଜୀବନରେ ଆଗକୁ ବଢ଼ିବାକୁ ସାହାଯ୍ୟ କର। ଯୀଶୁଙ୍କ ନାମରେ, ଆମେନ୍।"
+  },
+  {
+    title: "ଆଜି ପାଇଁ ଶକ୍ତି",
+    text: "ହେ ପ୍ରଭୁ, ଯେତେବେଳେ ମୁଁ ଦୁର୍ବଳ ଅନୁଭବ କରେ, ମୋତେ ମନେ ପକାଇଦିଅ ଯେ ମୋତେ ଏକାକୀ ସଂଘର୍ଷ କରିବାକୁ ପଡ଼ିବ ନାହିଁ। ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ପାଇଁ ସାହସ, ଏହି ମୁହୂର୍ତ୍ତ ପାଇଁ ଶାନ୍ତି ଏବଂ ସଠିକ୍ ନିଷ୍ପତ୍ତି ନେବାକୁ ଶକ୍ତି ଦିଅ। ଆମେନ୍।"
+  }
+];
+
 const grid = document.querySelector("#verseGrid");
 const filters = document.querySelector("#filters");
 const search = document.querySelector("#search");
-const languageToggle = document.querySelector("#languageToggle");
+const languageSelect = document.querySelector("#languageSelect");
 
 const favKey = "graceWordFavorites";
 const languageKey = "gloryNestLanguage";
@@ -99,8 +122,20 @@ const languageKey = "gloryNestLanguage";
 let active = "All";
 let currentLanguage = localStorage.getItem(languageKey) || "en";
 
+if (!["en", "hi", "or"].includes(currentLanguage)) {
+  currentLanguage = "en";
+}
+
+languageSelect.value = currentLanguage;
+
 const isHindi = () => currentLanguage === "hi";
-const verseText = v => isHindi() ? v.hindi : v.text;
+const isOdia = () => currentLanguage === "or";
+
+const verseText = v => {
+  if (isHindi()) return v.hindi;
+  if (isOdia()) return v.odia;
+  return v.text;
+};
 
 const saved = () => JSON.parse(localStorage.getItem(favKey) || "[]");
 
@@ -124,23 +159,30 @@ function toast(t) {
 function updateLanguageHeadings() {
   document.documentElement.lang = currentLanguage;
 
-  languageToggle.textContent = isHindi() ? "English" : "हिंदी";
-
   const headings = {
-    "Explore Scripture": "बाइबल के वचन पढ़ें",
-    "Prayers for the moment": "इस पल के लिए प्रार्थनाएँ",
-    "Saved verses": "सहेजे गए वचन"
+    "Explore Scripture": {
+      hi: "बाइबल के वचन पढ़ें",
+      or: "ବାଇବଲର ବାକ୍ୟ ପଢ଼ନ୍ତୁ"
+    },
+    "Prayers for the moment": {
+      hi: "इस पल के लिए प्रार्थनाएँ",
+      or: "ଏହି ମୁହୂର୍ତ୍ତ ପାଇଁ ପ୍ରାର୍ଥନା"
+    },
+    "Saved verses": {
+      hi: "सहेजे गए वचन",
+      or: "ସଞ୍ଚିତ ବାକ୍ୟ"
+    }
   };
 
   document.querySelectorAll("h2").forEach(heading => {
     const englishText =
       heading.dataset.englishText || heading.textContent.trim();
 
+    heading.dataset.englishText = englishText;
+
     if (headings[englishText]) {
-      heading.dataset.englishText = englishText;
-      heading.textContent = isHindi()
-        ? headings[englishText]
-        : englishText;
+      heading.textContent =
+        headings[englishText][currentLanguage] || englishText;
     }
   });
 }
@@ -167,7 +209,8 @@ function renderVerses() {
 
   const data = verses.filter(v =>
     (active === "All" || v.topic === active) &&
-    (!q || `${v.text} ${v.hindi} ${v.ref} ${v.topic}`.toLowerCase().includes(q))
+    (!q || `${v.text} ${v.hindi} ${v.odia} ${v.ref} ${v.topic}`
+      .toLowerCase().includes(q))
   );
 
   grid.innerHTML = data.length
@@ -184,7 +227,9 @@ function renderVerses() {
     : `<p class="empty">${
         isHindi()
           ? "कोई वचन नहीं मिला। कोई दूसरा शब्द या विषय खोजें।"
-          : "No verses found. Try another word or topic."
+          : isOdia()
+            ? "କୌଣସି ବାକ୍ୟ ମିଳିଲା ନାହିଁ। ଅନ୍ୟ ଶବ୍ଦ କିମ୍ବା ବିଷୟ ଖୋଜନ୍ତୁ।"
+            : "No verses found. Try another word or topic."
       }</p>`;
 
   grid.querySelectorAll("[data-save]").forEach(b => {
@@ -197,10 +242,24 @@ function toggleFavorite(id) {
 
   if (f.includes(id)) {
     f = f.filter(x => x !== id);
-    toast(isHindi() ? "सहेजे गए वचनों से हटाया गया" : "Removed from favorites");
+
+    toast(
+      isHindi()
+        ? "सहेजे गए वचनों से हटाया गया"
+        : isOdia()
+          ? "ସଞ୍ଚିତ ବାକ୍ୟରୁ ହଟାଗଲା"
+          : "Removed from favorites"
+    );
   } else {
     f.push(id);
-    toast(isHindi() ? "वचन सहेज लिया गया" : "Saved to your favorites");
+
+    toast(
+      isHindi()
+        ? "वचन सहेज लिया गया"
+        : isOdia()
+          ? "ବାକ୍ୟ ସଞ୍ଚୟ ହେଲା"
+          : "Saved to your favorites"
+    );
   }
 
   setSaved(f);
@@ -215,13 +274,16 @@ function renderFavorites() {
     box.innerHTML = `<p class="empty">${
       isHindi()
         ? "आपके सहेजे गए वचन यहाँ दिखाई देंगे।"
-        : "Your saved verses will appear here."
+        : isOdia()
+          ? "ଆପଣଙ୍କର ସଞ୍ଚିତ ବାକ୍ୟ ଏଠାରେ ଦେଖାଯିବ।"
+          : "Your saved verses will appear here."
     }</p>`;
     return;
   }
 
   box.innerHTML = f.map(id => {
     const v = verses.find(x => x.id === id);
+    if (!v) return "";
 
     return `
       <div class="favorite-row">
@@ -230,7 +292,7 @@ function renderFavorites() {
           <small>${v.ref} · ${v.topic}</small>
         </div>
         <button class="remove" data-remove="${id}">
-          ${isHindi() ? "हटाएँ" : "Remove"}
+          ${isHindi() ? "हटाएँ" : isOdia() ? "ହଟାନ୍ତୁ" : "Remove"}
         </button>
       </div>
     `;
@@ -242,11 +304,21 @@ function renderFavorites() {
 }
 
 function renderPrayers() {
-  const prayerList = isHindi() ? hindiPrayers : prayers;
+  const prayerList = isHindi()
+    ? hindiPrayers
+    : isOdia()
+      ? odiaPrayers
+      : prayers;
+
+  const prayerLabel = isHindi()
+    ? "प्रार्थना"
+    : isOdia()
+      ? "ପ୍ରାର୍ଥନା"
+      : "Prayer";
 
   document.querySelector("#prayerGrid").innerHTML = prayerList.map(p => `
     <article class="prayer">
-      <p class="eyebrow">${isHindi() ? "प्रार्थना" : "Prayer"}</p>
+      <p class="eyebrow">${prayerLabel}</p>
       <h3>${p.title}</h3>
       <p>${p.text}</p>
     </article>
@@ -264,8 +336,8 @@ function daily() {
   showDailyVerse(v);
 }
 
-languageToggle.onclick = () => {
-  currentLanguage = isHindi() ? "en" : "hi";
+languageSelect.onchange = () => {
+  currentLanguage = languageSelect.value;
   localStorage.setItem(languageKey, currentLanguage);
 
   updateLanguageHeadings();
@@ -278,7 +350,14 @@ languageToggle.onclick = () => {
 document.querySelector("#randomBtn").onclick = () => {
   const v = verses[Math.floor(Math.random() * verses.length)];
   showDailyVerse(v);
-  toast(isHindi() ? "इस पल के लिए एक वचन" : "A verse for this moment");
+
+  toast(
+    isHindi()
+      ? "इस पल के लिए एक वचन"
+      : isOdia()
+        ? "ଏହି ମୁହୂର୍ତ୍ତ ପାଇଁ ଏକ ବାକ୍ୟ"
+        : "A verse for this moment"
+  );
 };
 
 document.querySelector(".heart-btn").onclick = () => {
@@ -302,3 +381,4 @@ renderPrayers();
 renderFavorites();
 updateCount();
 daily();
+```

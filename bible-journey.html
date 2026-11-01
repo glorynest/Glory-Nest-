@@ -130,9 +130,8 @@ function save() {
 }
 
 function render() {
-  const term = E("search").value.toLowerCase();
-  const filter = E("filter").value;
-
+const term = (E("search")?.value || "").toLowerCase();
+const filter = E("filter")?.value || "all";
   E("stories").innerHTML = stories
     .map((s, i) => ({ s, i }))
     .filter(({ s, i }) =>
@@ -269,7 +268,16 @@ function saveNote(i) {
   E("feedback").textContent = "Reflection saved on this device.";
 }
 
-E("search").addEventListener("input", render);
-E("filter").addEventListener("change", render);
+const searchBox = E("search");
+const filterBox = E("filter");
+
+if (searchBox) {
+  searchBox.addEventListener("input", render);
+}
+
+if (filterBox) {
+  filterBox.addEventListener("change", render);
+}
+
 render();
 </script>

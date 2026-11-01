@@ -1,2 +1,35 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scripture Poster Library | Glory Nest</title><style>
-body{margin:0;background:#faf7ef;color:#26352b;font:16px Arial}header{padding:22px 5%;display:flex;justify-content:space-between;border-bottom:1px solid #e4e7dc}a{color:#315b43;text-decoration:none;font-weight:bold}main{max-width:1150px;margin:auto;padding:35px 20px}h1{font: bold 42px Georgia;color:#315b43}.intro{max-width:650px;line-height:1.6;color:#68746a}.controls{display:flex;gap:10px;margin:25px 0;flex-wrap:wrap}input,select{padding:13px;border:1px solid #ddd;border-radius:10px;font-size:15px}input{flex:1;min-width:220px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{min-height:290px;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(140deg,#f4eddd,#dfe9dc)}.card:nth-child(4n+2){background:linear-gradient(140deg,#e6eee5,#cadbce)}.card:nth-child(4n+3){background:linear-gradient(140deg,#f7eadb,#ead4bd)}.card:nth-child(4n+4){background:linear-gradient(140deg,#e8e8ef,#d5d9e5)}.tag{font-size:11px;text-transform:uppercase;letter-spacing:2px}.message{font:600 29px/1.2 Georgia}.ref{font-size:13px}.actions{display:flex;gap:8px}button{border:0;border-radius:20px;padding:11px 14px;background:#315b43;color:white;cursor:pointer}.secondary{background:#ffffffb5;color:#315b43}#count{color:#6d786f;font-size:13px}</style></head><body><header><a href="index.html">✝ Glory Nest</a><a href="index.html">← Back to home</a></header><main><p> SCRIPTURE • PRAYER • HOPE</p><h1>A little light for every day.</h1><p class="intro">Browse 100 encouraging Scripture-inspired posters. Search by message, theme, or Bible reference, then save a design or share its message.</p><div class="controls"><input id="search" placeholder="Search messages, themes, or references…" aria-label="Search"><select id="category" aria-label="Theme"><option>All themes</option></select></div><p id="count"></p><section id="grid" class="grid"></section></main><script src="posters.js"></script></body></html>
+body{margin:0;background:#faf7ef;color:#26352b;font:16px Arial}header{padding:22px 5%;display:flex;justify-content:space-between;border-bottom:1px solid #e4e7dc}a{color:#315b43;text-decoration:none;font-weight:bold}main{max-width:1150px;margin:auto;padding:35px 20px}h1{font: bold 42px Georgia;color:#315b43}.intro{max-width:650px;line-height:1.6;color:#68746a}.controls{display:flex;gap:10px;margin:25px 0;flex-wrap:wrap}input,select{padding:13px;border:1px solid #ddd;border-radius:10px;font-size:15px}input{flex:1;min-width:220px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card {
+  min-height: 290px;
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  background:
+    linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.08)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80")
+    center/cover no-repeat;
+}
+
+.card:nth-child(4n+2) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.08)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80")
+    center/cover no-repeat;
+}
+
+.card:nth-child(4n+3) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.08)),
+    url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80")
+    center/cover no-repeat;
+}
+
+.card:nth-child(4n+4) {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.08)),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80")
+    center/cover no-repeat;
+}.tag{font-size:11px;text-transform:uppercase;letter-spacing:2px}.message{font:600 29px/1.2 Georgia}.ref{font-size:13px}.actions{display:flex;gap:8px}button{border:0;border-radius:20px;padding:11px 14px;background:#315b43;color:white;cursor:pointer}.secondary{background:#ffffffb5;color:#315b43}#count{color:#6d786f;font-size:13px}</style></head><body><header><a href="index.html">✝ Glory Nest</a><a href="index.html">← Back to home</a></header><main><p> SCRIPTURE • PRAYER • HOPE</p><h1>A little light for every day.</h1><p class="intro">Browse 100 encouraging Scripture-inspired posters. Search by message, theme, or Bible reference, then save a design or share its message.</p><div class="controls"><input id="search" placeholder="Search messages, themes, or references…" aria-label="Search"><select id="category" aria-label="Theme"><option>All themes</option></select></div><p id="count"></p><section id="grid" class="grid"></section></main><script src="posters.js"></script></body></html>

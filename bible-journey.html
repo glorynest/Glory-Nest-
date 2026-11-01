@@ -1,71 +1,153 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bible Journey | Glory Nest</title>
-<style>
-:root{--cream:#faf7ef;--green:#315b43;--leaf:#6d8b65;--ink:#26372b;--line:#e5e4d8}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 system-ui,sans-serif}header{text-align:center;padding:28px 16px;background:linear-gradient(140deg,#e9f0df,#faf7ef)}h1,h2,h3{color:var(--green)}main{max-width:1050px;margin:auto;padding:20px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:11px;background:white}.toolbar input,.toolbar select{flex:1;min-width:180px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}.story,#detail{background:#fffdf8;border:1px solid var(--line);border-radius:18px;padding:16px}.story{cursor:pointer}.art {
-  height: 150px;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  background: linear-gradient(145deg, #e4edda, #f8e8cb);
-}
-
-.art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;}
-
-.detailart img {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  border-radius: 16px;}
-  .verse,.quiz{padding:12px;background:#f0f4e9;border-radius:12px;margin:12px 0}textarea{width:100%;min-height:90px}.quiz label{display:block;padding:4px}.bar{height:6px;background:#e7eadd;border-radius:9px;margin-top:9px}.bar span{display:block;background:var(--leaf);height:100%}.muted{color:#637461;font-size:.9rem}
-</style></head><body><header><h1>🌿 Bible Journey</h1><p>Walk through Scripture, one story at a time. Read, reflect, and discover how God’s Word speaks into everyday life.</p></header><main>
-<div class="toolbar"><input id="search" placeholder="Search stories or themes…"><select id="filter"><option value="all">All stories</option><option value="done">Completed</option><option value="todo">Not completed</option></select></div><section id="detail"></section><section id="stories" class="grid"></section><p class="muted">Progress and reflections are saved locally on this device.</p></main>
 <script>
 const stories = [
-"creation.png",
-  "noahs-ark.png",
-  "abraham.png",
-  "joseph.png",
-  "burning-bush.png",
-  "red-sea.png",
-  "ten-commandments.png",
-  "jericho.png",
-  "david-goliath.png",
-  "daniel-lions.png",
-  "esther.png",
-  "jonah.png",
-  "jesus-birth.png",
-  "calms-storm.png",
-  "feeding-5000.png",
-  "good-samaritan.png",
-  "prodigal-son.png",
-  "triumphal-entry.png",
-  "crucifixion.png",
-  "resurrection.png"];
-const KEY="gloryNestBibleJourney";let state=JSON.parse(localStorage.getItem(KEY)||"{}");const E=id=>document.getElementById(id);
-function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+  ["Creation", "Genesis 1:1–31", "creation.png",
+   "God created the heavens, the earth, and everything in them.",
+   "God is the Creator of all things. His creation reminds us of His power and goodness.",
+   "What did God create?",
+   ["The heavens and the earth", "Only the stars", "Nothing"], 0],
+
+  ["Noah's Ark", "Genesis 6–9", "noahs-ark.png",
+   "God instructed Noah to build an ark to save his family and the animals from the flood.",
+   "God is faithful to His promises and provides a way through difficult times.",
+   "What did God ask Noah to build?",
+   ["A palace", "An ark", "A tower"], 1],
+
+  ["Abraham", "Genesis 12:1–9", "abraham.png",
+   "God called Abraham to leave his home and follow Him to a land He would show him.",
+   "Faith means trusting God even when we cannot see the whole journey.",
+   "What did God ask Abraham to do?",
+   ["Build a temple", "Leave his home", "Become a king"], 1],
+
+  ["Joseph", "Genesis 37–50", "joseph.png",
+   "Joseph faced betrayal and hardship, but God was with him and used his life to save many people.",
+   "God can work through difficult circumstances for a greater purpose.",
+   "Who sold Joseph into slavery?",
+   ["His brothers", "The Egyptians", "The soldiers"], 0],
+
+  ["The Burning Bush", "Exodus 3", "burning-bush.png",
+   "God spoke to Moses from a burning bush and called him to lead the Israelites out of Egypt.",
+   "God can call us to meaningful work even when we feel unqualified.",
+   "Where did God speak to Moses?",
+   ["A palace", "A burning bush", "A river"], 1],
+
+  ["The Red Sea", "Exodus 14", "red-sea.png",
+   "God parted the Red Sea so the Israelites could escape from Egypt.",
+   "When the way seems impossible, God can make a way forward.",
+   "What sea did the Israelites cross?",
+   ["The Dead Sea", "The Red Sea", "The Mediterranean Sea"], 1],
+
+  ["The Ten Commandments", "Exodus 20", "ten-commandments.png",
+   "God gave Moses commandments to guide His people in how to live.",
+   "God's guidance helps us live with love, wisdom, and faithfulness.",
+   "Who received the commandments from God?",
+   ["Aaron", "Moses", "Joshua"], 1],
+
+  ["The Walls of Jericho", "Joshua 6", "jericho.png",
+   "The walls of Jericho fell after the Israelites followed God's instructions.",
+   "Trusting God's direction matters, even when it seems unusual.",
+   "What happened to Jericho's walls?",
+   ["They fell", "They grew taller", "They turned to gold"], 0],
+
+  ["David and Goliath", "1 Samuel 17", "david-goliath.png",
+   "David trusted God and defeated the giant Goliath with a sling and a stone.",
+   "Courage comes from trusting God, not from our size or strength.",
+   "How did David defeat Goliath?",
+   ["With a sword", "With a sling and stone", "With a bow"], 1],
+
+  ["Daniel and the Lions", "Daniel 6", "daniel-lions.png",
+   "Daniel continued praying to God and was protected in the lions' den.",
+   "Stay faithful to God, even when doing so is difficult.",
+   "Where was Daniel thrown?",
+   ["A furnace", "A prison ship", "A lions' den"], 2],
+
+  ["Esther", "Esther 4–7", "esther.png",
+   "Queen Esther courageously spoke up to protect her people.",
+   "God can use our position and courage to help others.",
+   "What did Esther help protect?",
+   ["Her people", "A treasure", "A city wall"], 0],
+
+  ["Jonah", "Jonah 1–4", "jonah.png",
+   "Jonah ran from God's instruction, but God gave him another chance to obey.",
+   "God is merciful and gives us opportunities to turn back to Him.",
+   "What swallowed Jonah?",
+   ["A whale-like great fish", "A lion", "A crocodile"], 0],
+
+  ["The Birth of Jesus", "Luke 2:1–20", "jesus-birth.png",
+   "Jesus was born in Bethlehem and laid in a manger.",
+   "Jesus' birth reminds us that God's greatest gifts can come in humble ways.",
+   "Where was Jesus born?",
+   ["Jerusalem", "Bethlehem", "Nazareth"], 1],
+
+  ["Jesus Calms the Storm", "Mark 4:35–41", "calms-storm.png",
+   "Jesus calmed a fierce storm while His disciples were afraid.",
+   "Even in life's storms, we can trust Jesus to be with us.",
+   "What did Jesus calm?",
+   ["A storm", "A fire", "An earthquake"], 0],
+
+  ["Feeding the Five Thousand", "John 6:1–14", "feeding-5000.png",
+   "Jesus fed a large crowd with five loaves and two fish.",
+   "God can use what we have, even when it seems small.",
+   "What food was shared?",
+   ["Five loaves and two fish", "Ten baskets of bread", "A feast"], 0],
+
+  ["The Good Samaritan", "Luke 10:25–37", "good-samaritan.png",
+   "A Samaritan helped a wounded man when others passed him by.",
+   "Loving our neighbor means showing compassion through action.",
+   "Who helped the wounded man?",
+   ["A priest", "A Samaritan", "A soldier"], 1],
+
+  ["The Prodigal Son", "Luke 15:11–32", "prodigal-son.png",
+   "A father welcomed his lost son home with love and forgiveness.",
+   "God welcomes us back when we turn to Him.",
+   "How did the father respond when his son returned?",
+   ["He welcomed him", "He sent him away", "He ignored him"], 0],
+
+  ["The Triumphal Entry", "Matthew 21:1–11", "triumphal-entry.png",
+   "Jesus entered Jerusalem while crowds welcomed Him with palm branches.",
+   "Jesus is the King who comes with humility and peace.",
+   "What did Jesus ride into Jerusalem?",
+   ["A horse", "A donkey", "A chariot"], 1],
+
+  ["The Crucifixion", "Luke 23", "crucifixion.png",
+   "Jesus gave His life on the cross for the forgiveness of sins.",
+   "The cross reveals God's deep love and the hope of forgiveness.",
+   "Where was Jesus crucified?",
+   ["On a cross", "In a palace", "In a temple"], 0],
+
+  ["The Resurrection", "Luke 24", "resurrection.png",
+   "On the third day, Jesus rose from the dead.",
+   "The resurrection gives believers hope and the promise of new life.",
+   "What happened on the third day?",
+   ["Jesus rose from the dead", "The disciples left", "The temple was built"], 0]
+];
+
+const KEY = "gloryNestBibleJourney";
+let state = JSON.parse(localStorage.getItem(KEY) || "{}");
+const E = id => document.getElementById(id);
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+
 function render() {
-  let term = E("search").value.toLowerCase();
-  let f = E("filter").value;
+  const term = E("search").value.toLowerCase();
+  const filter = E("filter").value;
 
   E("stories").innerHTML = stories
     .map((s, i) => ({ s, i }))
-    .filter(x =>
-      x.s.join(" ").toLowerCase().includes(term) &&
+    .filter(({ s, i }) =>
+      s.join(" ").toLowerCase().includes(term) &&
       (
-        f === "all" ||
-        (f === "done" && state[x.i]?.done) ||
-        (f === "todo" && !state[x.i]?.done)
+        filter === "all" ||
+        (filter === "done" && state[i]?.done) ||
+        (filter === "todo" && !state[i]?.done)
       )
     )
     .map(({ s, i }) => `
       <article class="story" onclick="openStory(${i})">
-
         <div class="art">
           <img
-            src="images/bible-journey/${storyImages[i]}"
+            src="images/bible-journey/${s[2]}"
             alt="${s[0]}"
             loading="lazy"
             onerror="this.style.display='none'"
@@ -73,31 +155,29 @@ function render() {
         </div>
 
         <small>${String(i + 1).padStart(2, "0")} · ${s[1]}</small>
-
         <h3>${s[0]}</h3>
-
         <div>${s[3]}</div>
 
         <div class="bar">
           <span style="width:${state[i]?.done ? 100 : 0}%"></span>
         </div>
-
       </article>
     `)
     .join("");
 }
+
 function openStory(i) {
-  let s = stories[i];
-  let d = state[i] || {};
+  const s = stories[i];
+  const d = state[i] || {};
 
   E("detail").style.display = "block";
 
   E("detail").innerHTML = `
-    <button class="secondary" onclick="closeStory()">← All stories</button>
+    <button onclick="closeStory()">← All stories</button>
 
     <div class="detailart">
       <img
-        src="images/bible-journey/${storyImages[i]}"
+        src="images/bible-journey/${s[2]}"
         alt="${s[0]}"
         loading="lazy"
         onerror="this.style.display='none'"
@@ -105,9 +185,7 @@ function openStory(i) {
     </div>
 
     <small>${s[1]}</small>
-
     <h2>${s[0]}</h2>
-
     <p>${s[3]}</p>
 
     <div class="verse">
@@ -116,7 +194,6 @@ function openStory(i) {
     </div>
 
     <label><b>Your reflection</b></label>
-
     <textarea id="note" placeholder="What stands out to you?">${d.note || ""}</textarea>
 
     <div class="quiz">
@@ -148,16 +225,51 @@ function openStory(i) {
       ${d.done ? "Completed ✓" : "Mark story complete"}
     </button>
 
-    <button class="secondary" onclick="saveNote(${i})">
-      Save reflection
-    </button>
+    <button onclick="saveNote(${i})">Save reflection</button>
   `;
 
   E("detail").scrollIntoView({ behavior: "smooth" });
 }
-function closeStory(){E("detail").style.display="none"}
-function check(i){let v=document.querySelector('input[name="ans"]:checked');if(!v){E("feedback").textContent="Choose an answer first.";return}state[i]=state[i]||{};state[i].answer=+v.value;E("feedback").textContent=+v.value===stories[i][7]?"Correct!":"Try again — read the story once more.";save()}
-function complete(i){state[i]=state[i]||{};state[i].done=true;save();render();openStory(i)}
-function saveNote(i){state[i]=state[i]||{};state[i].note=E("note").value;save();E("feedback").textContent="Reflection saved on this device."}
-E("search").addEventListener("input",render);E("filter").addEventListener("change",render);render();
-</script></body></html> update and give
+
+function closeStory() {
+  E("detail").style.display = "none";
+}
+
+function check(i) {
+  const v = document.querySelector('input[name="ans"]:checked');
+
+  if (!v) {
+    E("feedback").textContent = "Choose an answer first.";
+    return;
+  }
+
+  state[i] = state[i] || {};
+  state[i].answer = Number(v.value);
+
+  E("feedback").textContent =
+    Number(v.value) === stories[i][7]
+      ? "Correct!"
+      : "Try again — read the story once more.";
+
+  save();
+}
+
+function complete(i) {
+  state[i] = state[i] || {};
+  state[i].done = true;
+  save();
+  render();
+  openStory(i);
+}
+
+function saveNote(i) {
+  state[i] = state[i] || {};
+  state[i].note = E("note").value;
+  save();
+  E("feedback").textContent = "Reflection saved on this device.";
+}
+
+E("search").addEventListener("input", render);
+E("filter").addEventListener("change", render);
+render();
+</script>

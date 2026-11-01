@@ -6,6 +6,7 @@
   border-radius: 12px;
   margin-bottom: 10px;
   background: linear-gradient(145deg, #e4edda, #f8e8cb);
+  display: flex; align-items: center; justify-content: center; font-size: 4rem;
 }
 
 .art img {
@@ -14,6 +15,7 @@
   object-fit: cover;
   display: block;}
 
+.detailart { display: flex; align-items: center; justify-content: center; font-size: 6rem; }
 .detailart img {
   width: 100%;
   max-height: 360px;
@@ -34,24 +36,18 @@ const stories = [
 ["The Walls of Jericho","Joshua 6","🏰","Israel follows God’s instructions, and the walls of Jericho fall after the people march around the city.","Faithfulness may mean following an unexpected path.","What did the Israelites do around Jericho?",["Marched","Sailed","Built a wall"],0],
 ["David and Goliath","1 Samuel 17","🪨","Young David faces the giant Goliath, trusting not in armor but in the Lord.","Courage grows when we remember who stands with us.","What did David use?",["A sling and stone","A sword","A spear"],0],
 ["Daniel and the Lions","Daniel 6","🦁","Daniel keeps praying and is thrown into a lions’ den. God protects him.","Keep faith and integrity under pressure.","Why was Daniel thrown into the den?",["He kept praying","He fought the king","He left town"],0],
-["Esther’s Courage","Esther 4–7","👑","Queen Esther risks her safety to speak up for her people.","Courage can mean using your voice to protect others.","For whom did Esther speak?",["Her people","The army","The merchants"],0],
-["Jonah and the Great Fish","Jonah 1–4","🐋","Jonah runs from God’s call, but returns and delivers God’s message after the fish releases him.","God is patient and offers second chances.","Where did Jonah go to deliver God’s message?",["Nineveh","Jerusalem","Egypt"],0],
-["The Birth of Jesus","Luke 2:1–20","⭐","Jesus is born in Bethlehem. Angels announce the good news to shepherds.","God’s gift came in humility and love.","Where was Jesus born?",["Bethlehem","Nazareth","Jericho"],0],
-["Jesus Calms the Storm","Mark 4:35–41","⛵","A storm frightens the disciples, but Jesus commands the wind and waves to be still.","Jesus is present with us in life’s storms.","What did Jesus tell the storm?",["Be still","Go away","Come closer"],0],
-["Jesus Feeds Five Thousand","John 6:1–14","🍞","Jesus blesses five loaves and two fish, feeding a great crowd with food left over.","Offer what you have; God can use it in surprising ways.","What food did the boy bring?",["Five loaves and two fish","Seven cakes","Grapes"],0],
-["The Good Samaritan","Luke 10:25–37","🤝","A Samaritan cares for a wounded traveler when others pass by.","Love your neighbor through practical compassion.","Who acted as the neighbor?",["The Samaritan","The priest","The traveler"],0],
-["The Prodigal Son","Luke 15:11–32","🏡","A father welcomes his returning son with compassion and celebration.","God’s mercy welcomes those who turn back.","How did the father respond?",["Welcomed him joyfully","Sent him away","Ignored him"],0],
-["The Triumphal Entry","Matthew 21:1–11","🌿","Jesus enters Jerusalem as people welcome Him with branches and praise.","Welcome Jesus with a humble and sincere heart.","What did the crowd spread on the road?",["Cloaks and branches","Coins","Sand"],0],
-["The Crucifixion","Luke 23; John 19","✝️","Jesus gives His life on the cross, showing God’s love and making the way for forgiveness.","The cross reveals the depth of God’s love.","Where was Jesus crucified?",["Golgotha","Bethlehem","Capernaum"],0],
-["The Resurrection","Matthew 28; John 20","🌅","On the third day, Jesus rises. The empty tomb brings hope and new life.","The resurrection is the heart of Christian hope.","What did the women find at the tomb?",["The stone rolled away","A sealed door","A sleeping guard"],0]
+["Esther’s Courage","Esther 4–7",'<img src="images/esther.png" alt="Esther">',"Queen Esther risks her safety to speak up for her people.","Courage can mean using your voice to protect others.","For whom did Esther speak?",["Her people","The army","The merchants"],0],
+["Jonah and the Great Fish","Jonah 1–4",'<img src="images/jonah.png" alt="Jonah">',"Jonah runs from God’s call, but returns and delivers God’s message after the fish releases him.","God is patient and offers second chances.","Where did Jonah go to deliver God’s message?",["Nineveh","Jerusalem","Egypt"],0],
+["The Birth of Jesus","Luke 2:1–20",'<img src="images/jesus-birth.png" alt="Birth of Jesus">',"Jesus is born in Bethlehem. Angels announce the good news to shepherds.","God’s gift came in humility and love.","Where was Jesus born?",["Bethlehem","Nazareth","Jericho"],0],
+["Jesus Calms the Storm","Mark 4:35–41",'<img src="images/calms-storm.png" alt="Jesus Calms the Storm">',"A storm frightens the disciples, but Jesus commands the wind and waves to be still.","Jesus is present with us in life’s storms.","What did Jesus tell the storm?",["Be still","Go away","Come closer"],0],
+["Jesus Feeds Five Thousand","John 6:1–14",'<img src="images/feeding-5000.png" alt="Jesus Feeds 5000">',"Jesus blesses five loaves and two fish, feeding a great crowd with food left over.","Offer what you have; God can use it in surprising ways.","What food did the boy bring?",["Five loaves and two fish","Seven cakes","Grapes"],0],
+["The Good Samaritan","Luke 10:25–37",'<img src="images/good-samaritan.png" alt="Good Samaritan">',"A Samaritan cares for a wounded traveler when others pass by.","Love your neighbor through practical compassion.","Who acted as the neighbor?",["The Samaritan","The priest","The traveler"],0],
+["The Prodigal Son","Luke 15:11–32",'<img src="images/prodigal-son.png" alt="Prodigal Son">',"A father welcomes his returning son with compassion and celebration.","God’s mercy welcomes those who turn back.","How did the father respond?",["Welcomed him joyfully","Sent him away","Ignored him"],0],
+["The Triumphal Entry","Matthew 21:1–11",'<img src="images/triumphal-entry.png" alt="Triumphal Entry">',"Jesus enters Jerusalem as people welcome Him with branches and praise.","Welcome Jesus with a humble and sincere heart.","What did the crowd spread on the road?",["Cloaks and branches","Coins","Sand"],0],
+["The Crucifixion","Luke 23; John 19",'<img src="images/crucifixion.png" alt="Crucifixion">',"Jesus gives His life on the cross, showing God’s love and making the way for forgiveness.","The cross reveals the depth of God’s love.","Where was Jesus crucified?",["Golgotha","Bethlehem","Capernaum"],0],
+["The Resurrection","Matthew 28; John 20",'<img src="images/resurrection.png" alt="Resurrection">',"On the third day, Jesus rises. The empty tomb brings hope and new life.","The resurrection is the heart of Christian hope.","What did the women find at the tomb?",["The stone rolled away","A sealed door","A sleeping guard"],0]
 ];
 const KEY="gloryNestBibleJourney";let state=JSON.parse(localStorage.getItem(KEY)||"{}");const E=id=>document.getElementById(id);
 function save(){localStorage.setItem(KEY,JSON.stringify(state))}
 function render(){let term=E("search").value.toLowerCase(),f=E("filter").value;E("stories").innerHTML=stories.map((s,i)=>({s,i})).filter(x=>x.s.join(" ").toLowerCase().includes(term)&&(f==="all"||(f==="done"&&state[x.i]?.done)||(f==="todo"&&!state[x.i]?.done))).map(({s,i})=>`<article class="story" onclick="openStory(${i})"><div class="art">${s[2]}</div><small>${String(i+1).padStart(2,"0")} · ${s[1]}</small><h3>${s[0]}</h3><div>${s[3]}</div><div class="bar"><span style="width:${state[i]?.done?100:0}%"></span></div></article>`).join("")}
-function openStory(i){let s=stories[i],d=state[i]||{};E("detail").style.display="block";E("detail").innerHTML=`<button class="secondary" onclick="closeStory()">← All stories</button><div class="detailart">${s[2]}</div><small>${s[1]}</small><h2>${s[0]}</h2><p>${s[3]}</p><div class="verse"><b>Reflection</b><br>${s[4]}</div><label><b>Your reflection</b></label><textarea id="note" placeholder="What stands out to you?">${d.note||""}</textarea><div class="quiz"><b>Quick check</b><p>${s[5]}</p>${s[6].map((o,j)=>`<label><input type="radio" name="ans" value="${j}" ${d.answer===j?"checked":""}> ${o}</label>`).join("")}<p id="feedback">${d.answer!==undefined?(d.answer===s[7]?"Correct!":"Try again — read the story once more."):""}</p><button onclick="check(${i})">Check answer</button></div><button onclick="complete(${i})">${d.done?"Completed ✓":"Mark story complete"}</button><button class="secondary" onclick="saveNote(${i})">Save reflection</button>`;E("detail").scrollIntoView({behavior:"smooth"})}
-function closeStory(){E("detail").style.display="none"}
-function check(i){let v=document.querySelector('input[name="ans"]:checked');if(!v){E("feedback").textContent="Choose an answer first.";return}state[i]=state[i]||{};state[i].answer=+v.value;E("feedback").textContent=+v.value===stories[i][7]?"Correct!":"Try again — read the story once more.";save()}
-function complete(i){state[i]=state[i]||{};state[i].done=true;save();render();openStory(i)}
-function saveNote(i){state[i]=state[i]||{};state[i].note=E("note").value;save();E("feedback").textContent="Reflection saved on this device."}
-E("search").addEventListener("input",render);E("filter").addEventListener("change",render);render();
-</script></body></html>
+function openStory(i){let s=stories[i],d=state[i]||{};E("detail").style.display="block";E("detail").innerHTML=`<button class="secondary" onclick="closeStory()">← All stories</button><div class="detailart">${s[2]}</div><small>${s[1]}</small><h2>${s[0]}</h2><p>${s[3]}</p><div class="verse"><b>Reflection</b><br>${s[4]}</div><label><b>Your reflection</b></label><textarea id="note" placeholder="What stands out to you?">${d.note||""}</textarea><div class="quiz"><b>Quick check</b><p>${s[5]}</p>${s[6].map((o,j)=>`<label><input type="radio" name="ans" value="${j}" ${d.answer===j?"checked":""}> ${o}</label>`).join("")}<p id="feedback">${d.answer!==undefined?(d.answer===s[7]?"Correct!":"Try again — read the story once more."):""}</p><button onclick="check(${i})">Check answer</

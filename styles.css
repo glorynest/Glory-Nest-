@@ -17,3 +17,44 @@
     url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=85")
     center/cover no-repeat;
 }.download-poster{align-self:flex-start;margin-top:20px;border:1px solid rgba(255,255,255,.6);color:#fff;background:rgba(255,255,255,.1);border-radius:99px;padding:8px 14px;cursor:pointer}.muted{color:#73776f;font-size:13px}.favorites-list{min-height:90px}.favorite-row{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid #ddd5c8}.favorite-row blockquote{margin:0;font:600 22px "Cormorant Garamond",serif}.remove{border:0;background:none;color:#9a6f50;cursor:pointer}.empty{color:#898d85}.cta{padding:100px 9vw;text-align:center;background:#292e29;color:#f8f3ea}.cta h2{font:600 clamp(42px,5vw,70px)/.92 "Cormorant Garamond",serif;max-width:800px;margin:0 auto 20px}.cta p:not(.eyebrow){color:#c9c8c1}.light{background:#f7f3ec;color:#292e29;margin-top:20px}footer{padding:45px 9vw;background:#1f231f;color:#aaa99f}.footer-brand{color:#eeeae2;font-family:"Cormorant Garamond",serif;font-size:24px}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#252923;color:white;padding:11px 18px;border-radius:99px;font-size:13px;transition:.25s;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:850px){.site-header{padding:0 5vw}.site-header nav{display:none;position:absolute;top:76px;left:0;right:0;background:#f7f3ec;padding:20px 5vw;border-bottom:1px solid #ddd;flex-direction:column;gap:15px}.site-header nav.open{display:flex}.menu-btn{display:block}.hero{grid-template-columns:1fr;gap:40px;padding:75px 6vw}.hero-card{min-height:330px}.search-wrap,.section{padding-left:6vw;padding-right:6vw}.search-wrap{display:block}.search-box{margin-top:30px}.verse-grid,.prayer-grid,.poster-grid{grid-template-columns:1fr}.section-head{display:block}.filters{margin-top:20px}.cta{padding:80px 6vw}}@media(max-width:480px){.hero h1{font-size:58px}.hero-actions{flex-direction:column}.hero-card{padding:35px 25px}.hero-card blockquote{font-size:28px}.poster{min-height:390px}}
+/* ===== Bible Journey Navigation Icon ===== */
+
+.bible-journey-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 5px;
+  border-radius: 14px;
+  background: #f8f2e5;
+  border: 1px solid #d9e2d5;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.bible-journey-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bible-journey-icon:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 5px 14px rgba(49, 91, 67, 0.18);
+}
+
+.bible-journey-icon:focus-visible {
+  outline: 2px solid #315b43;
+  outline-offset: 3px;
+}
+
+/* Keep the icon neat on smaller screens */
+@media (max-width: 850px) {
+  .site-header nav .bible-journey-icon {
+    width: 44px;
+    height: 44px;
+    align-self: flex-start;
+  }
+}

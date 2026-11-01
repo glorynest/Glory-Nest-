@@ -280,228 +280,412 @@
   <script>
     "use strict";
 
-    const stories = [
-      {
-        id: 1,
-        title: "Creation",
-        reference: "Genesis 1–2",
-        image: "creation.png",
-        description: "God creates the heavens, the earth, and all living things.",
-        reflection: "God is the Creator of all things. What part of creation reminds you of His goodness?",
-        question: "What did God create on the first day?",
-        options: ["The animals", "Light", "The sun and moon", "The trees"],
-        answer: 1
-      },
-      {
-        id: 2,
-        title: "Noah’s Ark",
-        reference: "Genesis 6–9",
-        image: "noahs-ark.png",
-        description: "Noah trusts God and builds an ark to preserve life through the flood.",
-        reflection: "Noah obeyed God even when it was difficult. Where can you practice faithful obedience?",
-        question: "What sign did God give as a covenant after the flood?",
-        options: ["A rainbow", "A burning bush", "A dove", "A star"],
-        answer: 0
-      },
-      {
-        id: 3,
-        title: "God Calls Abraham",
-        reference: "Genesis 12, 15, 17",
-        image: "abraham.png",
-        description: "God calls Abraham to leave his home and promises to bless him.",
-        reflection: "Faith often means trusting God before we know the whole plan.",
-        question: "What did God promise Abraham?",
-        options: ["A palace", "A great nation", "A kingdom in Egypt", "A large army"],
-        answer: 1
-      },
-      {
-        id: 4,
-        title: "Joseph’s Journey",
-        reference: "Genesis 37–50",
-        image: "joseph.png",
-        description: "Joseph faces betrayal and hardship, but God uses his life to save many people.",
-        reflection: "God can work through difficult seasons. What hardship can you place in His hands?",
-        question: "What position did Joseph receive in Egypt?",
-        options: ["Pharaoh’s chief guard", "A shepherd", "A ruler under Pharaoh", "A fisherman"],
-        answer: 2
-      },
-      {
-        id: 5,
-        title: "The Burning Bush",
-        reference: "Exodus 3–4",
-        image: "burning-bush.png",
-        description: "God speaks to Moses from a burning bush and calls him to lead Israel.",
-        reflection: "God can call ordinary people to do meaningful things. What might He be asking you to do?",
-        question: "Who spoke to Moses from the burning bush?",
-        options: ["An angel only", "God", "Aaron", "Pharaoh"],
-        answer: 1
-      },
-      {
-        id: 6,
-        title: "Crossing the Red Sea",
-        reference: "Exodus 14",
-        image: "red-sea.png",
-        description: "God makes a way for the Israelites to cross the sea and escape Egypt.",
-        reflection: "When you feel trapped, remember that God is able to make a way.",
-        question: "What happened when Moses stretched out his hand over the sea?",
-        options: ["The sea parted", "The sea became a mountain", "It began to snow", "The Israelites returned to Egypt"],
-        answer: 0
-      },
-      {
-        id: 7,
-        title: "The Ten Commandments",
-        reference: "Exodus 19–20",
-        image: "ten-commandments.png",
-        description: "God gives His people commandments to guide their lives and worship.",
-        reflection: "God’s instructions help us live with love, faithfulness, and wisdom.",
-        question: "Where did Moses receive the commandments?",
-        options: ["Mount Carmel", "Mount Sinai", "Mount Zion", "The Mount of Olives"],
-        answer: 1
-      },
-      {
-        id: 8,
-        title: "The Walls of Jericho",
-        reference: "Joshua 6",
-        image: "jericho.png",
-        description: "The Israelites follow God’s instructions, and the walls of Jericho fall.",
-        reflection: "Faithful obedience can look unusual. How can you trust God’s direction today?",
-        question: "What happened to Jericho’s walls?",
-        options: ["They were rebuilt", "They were covered by water", "They fell", "They turned to gold"],
-        answer: 2
-      },
-      {
-        id: 9,
-        title: "David and Goliath",
-        reference: "1 Samuel 17",
-        image: "david-goliath.png",
-        description: "Young David trusts God and faces the giant Goliath.",
-        reflection: "The size of a challenge does not limit God’s power. What fear can you face with faith?",
-        question: "What did David use to strike Goliath?",
-        options: ["A sword", "A sling and stone", "A spear", "A bow"],
-        answer: 1
-      },
-      {
-        id: 10,
-        title: "Daniel in the Lions’ Den",
-        reference: "Daniel 6",
-        image: "daniel-lions.png",
-        description: "Daniel continues praying to God and is protected in the lions’ den.",
-        reflection: "Daniel remained faithful under pressure. How can you keep prayer central in your life?",
-        question: "Why was Daniel thrown into the lions’ den?",
-        options: ["He refused to stop praying to God", "He stole from the king", "He left the kingdom", "He fought the soldiers"],
-        answer: 0
-      },
-      {
-        id: 11,
-        title: "Esther’s Courage",
-        reference: "Esther 4–7",
-        image: "esther.png",
-        description: "Queen Esther courageously speaks up to protect her people.",
-        reflection: "You may be placed where your courage can help someone else. Who needs you to speak up?",
-        question: "Why did Esther approach the king?",
-        options: ["To ask for a new palace", "To protect her people", "To leave the kingdom", "To become a soldier"],
-        answer: 1
-      },
-      {
-        id: 12,
-        title: "Jonah and the Great Fish",
-        reference: "Jonah 1–4",
-        image: "jonah.png",
-        description: "Jonah runs from God’s call, but God gives him another opportunity.",
-        reflection: "God is merciful and patient. Is there an instruction you have been avoiding?",
-        question: "Where did Jonah go after being thrown into the sea?",
-        options: ["A cave", "A palace", "Inside a great fish", "A desert"],
-        answer: 2
-      },
-      {
-        id: 13,
-        title: "The Birth of Jesus",
-        reference: "Luke 2:1–20",
-        image: "jesus-birth.png",
-        description: "Jesus is born in Bethlehem, and angels announce His birth to shepherds.",
-        reflection: "Jesus came into the world in humility. How can you welcome Him into your daily life?",
-        question: "Where was Jesus born?",
-        options: ["Jerusalem", "Bethlehem", "Nazareth", "Capernaum"],
-        answer: 1
-      },
-      {
-        id: 14,
-        title: "Jesus Calms the Storm",
-        reference: "Mark 4:35–41",
-        image: "calms-storm.png",
-        description: "Jesus calms a storm and teaches His disciples to trust Him.",
-        reflection: "Jesus is present even in life’s storms. What worry can you bring to Him?",
-        question: "What did Jesus say to the storm?",
-        options: ["Peace, be still", "Come back tomorrow", "Follow the disciples", "Go to the mountain"],
-        answer: 0
-      },
-      {
-        id: 15,
-        title: "Feeding the Five Thousand",
-        reference: "John 6:1–14",
-        image: "feeding-5000.png",
-        description: "Jesus uses a small meal to feed a large crowd.",
-        reflection: "God can use what you have, even when it seems small. What can you offer today?",
-        question: "What food was brought to Jesus?",
-        options: ["Seven loaves and fish", "Five loaves and two fish", "Bread and grapes", "Manna and water"],
-        answer: 1
-      },
-      {
-        id: 16,
-        title: "The Good Samaritan",
-        reference: "Luke 10:25–37",
-        image: "good-samaritan.png",
-        description: "A Samaritan helps a wounded man when others pass him by.",
-        reflection: "Love is shown through action. Who could use your kindness today?",
-        question: "Who helped the wounded man?",
-        options: ["A priest", "A Levite", "A Samaritan", "A soldier"],
-        answer: 2
-      },
-      {
-        id: 17,
-        title: "The Prodigal Son",
-        reference: "Luke 15:11–32",
-        image: "prodigal-son.png",
-        description: "A father welcomes his returning son with compassion and forgiveness.",
-        reflection: "God welcomes those who turn back to Him. Is there something you need to bring to Him?",
-        question: "How did the father respond when his son returned?",
-        options: ["He welcomed him with compassion", "He sent him away", "He ignored him", "He imprisoned him"],
-        answer: 0
-      },
-      {
-        id: 18,
-        title: "The Triumphal Entry",
-        reference: "Matthew 21:1–11",
-        image: "triumphal-entry.png",
-        description: "Jesus enters Jerusalem, and the crowd welcomes Him with praise.",
-        reflection: "Make room for Jesus in your heart. What does honoring Him look like today?",
-        question: "What animal did Jesus ride into Jerusalem?",
-        options: ["A horse", "A donkey", "A camel", "A chariot"],
-        answer: 1
-      },
-      {
-        id: 19,
-        title: "The Crucifixion",
-        reference: "Luke 23",
-        image: "crucifixion.png",
-        description: "Jesus gives His life on the cross for the forgiveness of sins.",
-        reflection: "Remember the depth of Jesus’ love and the grace offered through Him.",
-        question: "Where was Jesus crucified?",
-        options: ["Bethlehem", "Mount Sinai", "Golgotha", "Jericho"],
-        answer: 2
-      },
-      {
-        id: 20,
-        title: "The Resurrection",
-        reference: "Luke 24:1–12",
-        image: "resurrection.png",
-        description: "Jesus rises from the dead, bringing hope and the promise of new life.",
-        reflection: "The resurrection reminds us that hope is alive in Jesus. Where do you need renewed hope?",
-        question: "What did the women discover at the tomb?",
-        options: ["The stone was rolled away and the tomb was empty", "The tomb was sealed", "The disciples were waiting inside", "The tomb had moved"],
-        answer: 0
-      }
-    ];
+ const stories = [
+  {
+    id: 1,
+    title: "Creation",
+    reference: "Genesis 1–2",
+    image: "creation.png",
+    description: "God creates the heavens, the earth, and all living things.",
+    fullStory: `In the beginning, God created the heavens and the earth. The earth was formless and empty, and darkness covered the deep. God spoke, and light appeared. He separated the light from the darkness and called them day and night.
+
+God made the sky, gathered the waters, and brought forth dry land. He filled the earth with plants and trees. He placed the sun, moon, and stars in the heavens to mark the seasons and days.
+
+God created birds to fly through the sky, fish to swim in the seas, and animals to live on the land. Finally, God created humanity in His own image, male and female, and gave them responsibility to care for His creation.
+
+God saw everything He had made, and it was very good. On the seventh day, He rested and blessed the day. The story reminds us that all creation belongs to God and that every human life has dignity and purpose.`,
+    reflection: "God is the Creator of all things. What part of creation reminds you of His goodness?",
+    question: "What did God create on the first day?",
+    options: ["The animals", "Light", "The sun and moon", "The trees"],
+    answer: 1
+  },
+  {
+    id: 2,
+    title: "Noah’s Ark",
+    reference: "Genesis 6–9",
+    image: "noahs-ark.png",
+    description: "Noah trusts God and builds an ark to preserve life through the flood.",
+    fullStory: `The people of the earth had become wicked, and violence filled the land. But Noah found favor with God because he was a righteous man who walked faithfully with Him.
+
+God told Noah that a great flood would come and instructed him to build a large ark. Noah obeyed, even though the task was difficult. He gathered his family and brought animals into the ark as God had commanded.
+
+Rain fell for many days, and the waters covered the earth. The ark floated safely above the flood. God remembered Noah and caused the waters to recede. Eventually, Noah, his family, and the animals came out onto dry land.
+
+Noah built an altar and worshiped God. God made a covenant with Noah and promised never again to destroy all life with a flood. As a sign of this promise, God placed a rainbow in the clouds. The rainbow reminds us of God's faithfulness and mercy.`,
+    reflection: "Noah obeyed God even when it was difficult. Where can you practice faithful obedience?",
+    question: "What sign did God give as a covenant after the flood?",
+    options: ["A rainbow", "A burning bush", "A dove", "A star"],
+    answer: 0
+  },
+  {
+    id: 3,
+    title: "God Calls Abraham",
+    reference: "Genesis 12, 15, 17",
+    image: "abraham.png",
+    description: "God calls Abraham to leave his home and promises to bless him.",
+    fullStory: `God spoke to Abram and told him to leave his country, his relatives, and his father's household. God promised to lead him to a new land and make him into a great nation. Through Abram, all the families of the earth would be blessed.
+
+Abram trusted God's promise and set out on the journey with his wife Sarai and his family. He did not know every detail of the future, but he chose to follow God's direction.
+
+As time passed, Abram and Sarai grew old without having a child. Yet God repeated His promise. He brought Abram outside and told him to look at the stars, saying that his descendants would be as numerous as the stars in the sky.
+
+God later changed Abram's name to Abraham and Sarai's name to Sarah. He promised that Sarah would have a son. Abraham believed God, and in time Isaac was born.
+
+Abraham's journey teaches us that faith means trusting God's promises, even when we cannot see how they will be fulfilled.`,
+    reflection: "Faith often means trusting God before we know the whole plan.",
+    question: "What did God promise Abraham?",
+    options: ["A palace", "A great nation", "A kingdom in Egypt", "A large army"],
+    answer: 1
+  },
+  {
+    id: 4,
+    title: "Joseph’s Journey",
+    reference: "Genesis 37–50",
+    image: "joseph.png",
+    description: "Joseph faces betrayal and hardship, but God uses his life to save many people.",
+    fullStory: `Joseph was one of Jacob's sons, and his father loved him dearly. Joseph received a special robe, and his brothers became jealous. When Joseph shared dreams that suggested he would one day have authority over them, their jealousy grew stronger.
+
+His brothers sold him to traders, who took him to Egypt. Joseph became a servant in the house of Potiphar. Though he worked faithfully, he was falsely accused and sent to prison.
+
+Even in prison, Joseph trusted God. He interpreted dreams for two prisoners, and later Pharaoh heard about Joseph's gift. Joseph explained Pharaoh's dreams, which warned of seven years of plenty followed by seven years of famine.
+
+Pharaoh placed Joseph in a position of great authority to prepare Egypt for the famine. When Joseph's brothers came to Egypt seeking food, Joseph recognized them. Instead of taking revenge, he forgave them and helped his family survive.
+
+Joseph understood that God had worked through his painful experiences to preserve many lives. His story reminds us that God can bring good from difficult circumstances.`,
+    reflection: "God can work through difficult seasons. What hardship can you place in His hands?",
+    question: "What position did Joseph receive in Egypt?",
+    options: ["Pharaoh’s chief guard", "A shepherd", "A ruler under Pharaoh", "A fisherman"],
+    answer: 2
+  },
+  {
+    id: 5,
+    title: "The Burning Bush",
+    reference: "Exodus 3–4",
+    image: "burning-bush.png",
+    description: "God speaks to Moses from a burning bush and calls him to lead Israel.",
+    fullStory: `Moses was living in the land of Midian and tending the flock of his father-in-law. One day, he led the sheep near Mount Horeb and noticed a bush that was burning but was not being consumed by the fire.
+
+As Moses approached, God called to him from the bush. God told Moses to remove his sandals because he was standing on holy ground. He explained that He had seen the suffering of the Israelites in Egypt and had heard their cries.
+
+God called Moses to return to Egypt and lead the Israelites out of slavery. Moses felt unsure and asked who he was to carry out such an important mission. God promised to be with him.
+
+Moses also worried that the people would not believe him. God gave him signs and appointed Aaron to help him speak. Though Moses felt weak and uncertain, God equipped him for the task.
+
+The burning bush reminds us that God sees suffering, hears prayer, and can call ordinary people to take part in His work.`,
+    reflection: "God can call ordinary people to do meaningful things. What might He be asking you to do?",
+    question: "Who spoke to Moses from the burning bush?",
+    options: ["An angel only", "God", "Aaron", "Pharaoh"],
+    answer: 1
+  },
+  {
+    id: 6,
+    title: "Crossing the Red Sea",
+    reference: "Exodus 14",
+    image: "red-sea.png",
+    description: "God makes a way for the Israelites to cross the sea and escape Egypt.",
+    fullStory: `After God brought the Israelites out of slavery in Egypt, Pharaoh changed his mind and pursued them with his army. The Israelites found themselves trapped between the Egyptian soldiers and the Red Sea.
+
+The people became afraid and cried out to Moses. Moses encouraged them to stand firm and trust that God would deliver them. God instructed Moses to stretch out his hand over the sea.
+
+A strong wind blew throughout the night, and the waters separated. The Israelites walked through the sea on dry ground, with walls of water on both sides.
+
+When the Egyptians followed them, God caused the waters to return. The Egyptian army was overwhelmed, while the Israelites reached the other side safely.
+
+The people saw God's power and praised Him for their deliverance. The crossing of the Red Sea reminds us that God is able to make a way when we feel trapped and that His faithfulness can carry us through fear.`,
+    reflection: "When you feel trapped, remember that God is able to make a way.",
+    question: "What happened when Moses stretched out his hand over the sea?",
+    options: ["The sea parted", "The sea became a mountain", "It began to snow", "The Israelites returned to Egypt"],
+    answer: 0
+  },
+  {
+    id: 7,
+    title: "The Ten Commandments",
+    reference: "Exodus 19–20",
+    image: "ten-commandments.png",
+    description: "God gives His people commandments to guide their lives and worship.",
+    fullStory: `After leaving Egypt, the Israelites traveled through the wilderness and arrived at Mount Sinai. God called Moses up the mountain and reminded the people that He had rescued them from slavery.
+
+God made a covenant with Israel and gave them commandments to guide their lives. The commandments taught the people to worship God alone, honor His name, remember the Sabbath, and respect their parents.
+
+God also instructed them not to murder, commit adultery, steal, give false testimony, or covet what belonged to others. These commands showed the people how to live in a way that honored God and protected their community.
+
+The mountain was covered with smoke, and thunder and lightning filled the scene as God spoke. Moses received the commandments and brought God's words to the people.
+
+The Ten Commandments remind us that God's instructions are not meant to harm us. They guide us toward faithfulness, justice, love, and a life that honors Him.`,
+    reflection: "God’s instructions help us live with love, faithfulness, and wisdom.",
+    question: "Where did Moses receive the commandments?",
+    options: ["Mount Carmel", "Mount Sinai", "Mount Zion", "The Mount of Olives"],
+    answer: 1
+  },
+  {
+    id: 8,
+    title: "The Walls of Jericho",
+    reference: "Joshua 6",
+    image: "jericho.png",
+    description: "The Israelites follow God’s instructions, and the walls of Jericho fall.",
+    fullStory: `After Moses died, Joshua became the leader of the Israelites. God promised to be with Joshua as he led the people into the Promised Land.
+
+The city of Jericho stood before them, surrounded by strong walls. God gave Joshua unusual instructions for taking the city. The Israelites were to march around Jericho once each day for six days, with priests carrying trumpets before the ark of the covenant.
+
+On the seventh day, they were to march around the city seven times. After the priests sounded the trumpets, the people were to shout.
+
+Joshua shared God's instructions, and the people obeyed. On the seventh day, after the final trumpet blast and the people's shout, the walls of Jericho fell.
+
+The Israelites entered the city as God had directed. This story teaches us that God's wisdom may not always match our expectations, but we can trust Him and obey His direction.`,
+    reflection: "Faithful obedience can look unusual. How can you trust God’s direction today?",
+    question: "What happened to Jericho’s walls?",
+    options: ["They were rebuilt", "They were covered by water", "They fell", "They turned to gold"],
+    answer: 2
+  },
+  {
+    id: 9,
+    title: "David and Goliath",
+    reference: "1 Samuel 17",
+    image: "david-goliath.png",
+    description: "Young David trusts God and faces the giant Goliath.",
+    fullStory: `The Israelites were facing the Philistine army. A giant warrior named Goliath came forward each day and challenged Israel to send someone to fight him. The Israelites were terrified.
+
+David was a young shepherd who had come to the camp to bring food to his brothers. When he heard Goliath mocking Israel and the living God, David was troubled that no one would stand against him.
+
+David told King Saul that he would fight Goliath. Saul offered him armor, but David was not used to wearing it. Instead, David took his staff, selected five smooth stones from a stream, and carried his sling.
+
+Goliath mocked David, but David declared that the battle belonged to the Lord. David placed a stone in his sling and struck Goliath in the forehead. The giant fell, and David defeated him.
+
+David's courage came from his trust in God, not from his size or strength. His story reminds us that no challenge is greater than God's power.`,
+    reflection: "The size of a challenge does not limit God’s power. What fear can you face with faith?",
+    question: "What did David use to strike Goliath?",
+    options: ["A sword", "A sling and stone", "A spear", "A bow"],
+    answer: 1
+  },
+  {
+    id: 10,
+    title: "Daniel in the Lions’ Den",
+    reference: "Daniel 6",
+    image: "daniel-lions.png",
+    description: "Daniel continues praying to God and is protected in the lions’ den.",
+    fullStory: `Daniel served faithfully in the kingdom of Babylon and was known for his wisdom and integrity. King Darius planned to place Daniel over the other officials, which made them jealous.
+
+The officials searched for a way to accuse Daniel but could find no wrongdoing. They persuaded the king to issue a law that for thirty days no one could pray to any god or person except the king.
+
+Daniel knew about the law, but he continued to pray to God three times a day, as he had done before. His enemies reported him to the king, and Daniel was thrown into a den of lions.
+
+The king was distressed and hoped Daniel's God would rescue him. At dawn, the king hurried to the den and called out. Daniel answered that God had sent His angel to shut the lions' mouths.
+
+Daniel was lifted out unharmed. His faithfulness reminds us to remain devoted to God, even when following Him brings pressure or difficulty.`,
+    reflection: "Daniel remained faithful under pressure. How can you keep prayer central in your life?",
+    question: "Why was Daniel thrown into the lions’ den?",
+    options: ["He refused to stop praying to God", "He stole from the king", "He left the kingdom", "He fought the soldiers"],
+    answer: 0
+  },
+  {
+    id: 11,
+    title: "Esther’s Courage",
+    reference: "Esther 4–7",
+    image: "esther.png",
+    description: "Queen Esther courageously speaks up to protect her people.",
+    fullStory: `Esther was a Jewish woman who became queen of Persia. She had been raised by her cousin Mordecai, who cared for her like a daughter.
+
+A powerful official named Haman became angry with Mordecai and planned to destroy the Jewish people throughout the kingdom. When Mordecai learned of the danger, he urged Esther to speak to the king.
+
+Approaching the king without being summoned could lead to death. Esther was afraid, but Mordecai reminded her that she might have become queen for a time like this. Esther asked the Jewish people to fast, and she prepared to approach the king.
+
+Esther went before the king, who welcomed her. She invited the king and Haman to a series of banquets. At the right moment, Esther revealed Haman's plan and told the king that her people were in danger.
+
+The king acted, and the Jewish people were protected. Esther's story reminds us that courage often means speaking up for others, even when doing so is difficult.`,
+    reflection: "You may be placed where your courage can help someone else. Who needs you to speak up?",
+    question: "Why did Esther approach the king?",
+    options: ["To ask for a new palace", "To protect her people", "To leave the kingdom", "To become a soldier"],
+    answer: 1
+  },
+  {
+    id: 12,
+    title: "Jonah and the Great Fish",
+    reference: "Jonah 1–4",
+    image: "jonah.png",
+    description: "Jonah runs from God’s call, but God gives him another opportunity.",
+    fullStory: `God called Jonah to go to the city of Nineveh and warn its people to turn away from their wickedness. Jonah did not want to go. Instead, he boarded a ship sailing in the opposite direction.
+
+A great storm arose, and the sailors feared the ship would sink. They discovered that Jonah was fleeing from God's command. Jonah told them to throw him into the sea, and when they did, the storm stopped.
+
+God appointed a great fish to swallow Jonah. Jonah remained inside the fish for three days and three nights. From there, he prayed to God and asked for deliverance.
+
+God commanded the fish to release Jonah onto dry land. God called Jonah again to go to Nineveh, and this time Jonah obeyed. The people of Nineveh listened to his warning, turned from their evil ways, and God showed them mercy.
+
+Jonah's story teaches us that we cannot escape God's presence, that He hears our prayers, and that His mercy extends even to those we may not expect.`,
+    reflection: "God is merciful and patient. Is there an instruction you have been avoiding?",
+    question: "Where did Jonah go after being thrown into the sea?",
+    options: ["A cave", "A palace", "Inside a great fish", "A desert"],
+    answer: 2
+  },
+  {
+    id: 13,
+    title: "The Birth of Jesus",
+    reference: "Luke 2:1–20",
+    image: "jesus-birth.png",
+    description: "Jesus is born in Bethlehem, and angels announce His birth to shepherds.",
+    fullStory: `During the time of Caesar Augustus, a census was ordered throughout the Roman Empire. Joseph traveled from Nazareth to Bethlehem, the town of David, because he belonged to David's family. Mary went with him, and she was expecting a child.
+
+While they were in Bethlehem, the time came for Mary to give birth. She gave birth to her firstborn son, wrapped Him in cloths, and laid Him in a manger because there was no guest room available for them.
+
+That night, shepherds were watching their flocks in the fields. An angel appeared and announced good news of great joy: a Savior had been born in the city of David. The angel said the child would be found wrapped in cloths and lying in a manger.
+
+A great company of heavenly angels praised God, saying, “Glory to God in the highest.” The shepherds hurried to Bethlehem and found Mary, Joseph, and the baby Jesus.
+
+They shared what they had heard, and they returned praising God. Jesus' humble birth reminds us that God came near to humanity and brought hope to the world.`,
+    reflection: "Jesus came into the world in humility. How can you welcome Him into your daily life?",
+    question: "Where was Jesus born?",
+    options: ["Jerusalem", "Bethlehem", "Nazareth", "Capernaum"],
+    answer: 1
+  },
+  {
+    id: 14,
+    title: "Jesus Calms the Storm",
+    reference: "Mark 4:35–41",
+    image: "calms-storm.png",
+    description: "Jesus calms a storm and teaches His disciples to trust Him.",
+    fullStory: `One evening, Jesus told His disciples to cross the Sea of Galilee with Him. They set out in a boat, and Jesus was resting in the stern.
+
+A powerful storm arose. Waves crashed into the boat, and water began to fill it. The disciples were experienced fishermen, but they feared they would drown.
+
+They woke Jesus and asked whether He cared that they were perishing. Jesus rose and spoke to the wind and the waves. He said, “Peace, be still!” Immediately, the wind stopped, and the sea became calm.
+
+Jesus then asked His disciples why they were afraid and whether they still had no faith. The disciples were amazed and wondered who He was, because even the wind and the waves obeyed Him.
+
+This story reminds us that Jesus has authority over creation. When storms come into our lives, we can bring our fears to Him and remember that He is present with us.`,
+    reflection: "Jesus is present even in life’s storms. What worry can you bring to Him?",
+    question: "What did Jesus say to the storm?",
+    options: ["Peace, be still", "Come back tomorrow", "Follow the disciples", "Go to the mountain"],
+    answer: 0
+  },
+  {
+    id: 15,
+    title: "Feeding the Five Thousand",
+    reference: "John 6:1–14",
+    image: "feeding-5000.png",
+    description: "Jesus uses a small meal to feed a large crowd.",
+    fullStory: `A large crowd followed Jesus because they had seen the signs He performed by healing the sick. Jesus went up a mountainside with His disciples, and the people gathered around Him.
+
+As evening approached, Jesus asked Philip where they could buy bread for the crowd. Philip wondered how they could possibly afford to feed so many people.
+
+Andrew found a boy who had five small barley loaves and two fish. The food seemed far too little for such a large crowd, but Jesus told the people to sit down.
+
+Jesus took the loaves, gave thanks, and distributed the food. He did the same with the fish. Everyone ate as much as they wanted, and when they had finished, the disciples gathered twelve baskets of leftover pieces.
+
+About five thousand men had been fed, not counting women and children. The miracle showed Jesus' compassion and power. It reminds us that God can use even a small offering to bless many people.`,
+    reflection: "God can use what you have, even when it seems small. What can you offer today?",
+    question: "What food was brought to Jesus?",
+    options: ["Seven loaves and fish", "Five loaves and two fish", "Bread and grapes", "Manna and water"],
+    answer: 1
+  },
+  {
+    id: 16,
+    title: "The Good Samaritan",
+    reference: "Luke 10:25–37",
+    image: "good-samaritan.png",
+    description: "A Samaritan helps a wounded man when others pass him by.",
+    fullStory: `A teacher of the law asked Jesus what he must do to inherit eternal life. Jesus asked him what the law said, and the man answered that he should love God with all his heart and love his neighbor as himself.
+
+The man then asked Jesus, “Who is my neighbor?” Jesus answered with a story.
+
+A man was traveling from Jerusalem to Jericho when robbers attacked him. They took his belongings, beat him, and left him wounded beside the road.
+
+A priest passed by but did not stop. A Levite also saw the man and continued on his way. Then a Samaritan came along. Although Samaritans and Jews often had hostility between them, the Samaritan was moved with compassion.
+
+He cared for the wounded man's injuries, placed him on his animal, and took him to an inn. He paid for the man's care and promised to cover any additional expenses.
+
+Jesus asked who had acted as the wounded man's neighbor. The answer was the one who showed mercy. Jesus told His listeners to go and do likewise. The story teaches us that love is shown through compassionate action.`,
+    reflection: "Love is shown through action. Who could use your kindness today?",
+    question: "Who helped the wounded man?",
+    options: ["A priest", "A Levite", "A Samaritan", "A soldier"],
+    answer: 2
+  },
+  {
+    id: 17,
+    title: "The Prodigal Son",
+    reference: "Luke 15:11–32",
+    image: "prodigal-son.png",
+    description: "A father welcomes his returning son with compassion and forgiveness.",
+    fullStory: `Jesus told a story about a father who had two sons. The younger son asked his father for his share of the inheritance. The father divided his property between them.
+
+The younger son traveled to a distant country and wasted his wealth in careless living. When a severe famine came, he became desperate and took a job feeding pigs. He was so hungry that even the food given to the pigs looked appealing.
+
+The son remembered his father's household, where even the servants had enough to eat. He decided to return home, confess his wrongdoing, and ask to be treated as a servant.
+
+While the son was still far away, his father saw him and ran to welcome him. The father embraced him and celebrated his return. He gave him a robe, a ring, and sandals, and ordered a feast.
+
+The older son became angry, but the father explained that they had reason to celebrate because his lost brother had returned.
+
+Jesus' story reveals God's loving heart toward those who turn back to Him. It also challenges us to show compassion and forgiveness to others.`,
+    reflection: "God welcomes those who turn back to Him. Is there something you need to bring to Him?",
+    question: "How did the father respond when his son returned?",
+    options: ["He welcomed him with compassion", "He sent him away", "He ignored him", "He imprisoned him"],
+    answer: 0
+  },
+  {
+    id: 18,
+    title: "The Triumphal Entry",
+    reference: "Matthew 21:1–11",
+    image: "triumphal-entry.png",
+    description: "Jesus enters Jerusalem, and the crowd welcomes Him with praise.",
+    fullStory: `As Jesus and His disciples approached Jerusalem, Jesus sent two disciples to a nearby village. He told them they would find a donkey and its colt tied there. They were to bring the animals to Him.
+
+The disciples followed His instructions and brought the donkey and colt. They placed their cloaks on the animals, and Jesus sat on them.
+
+A large crowd spread their cloaks on the road. Others cut branches from trees and laid them along the path. The people went ahead of Jesus and followed Him, shouting praises and welcoming Him as the Son of David.
+
+The city was stirred, and people asked who Jesus was. The crowd answered that He was Jesus, the prophet from Nazareth in Galilee.
+
+Jesus entered Jerusalem in humility, riding on a donkey rather than a warhorse. The event fulfilled the words of the prophet and showed that Jesus came as the promised King.
+
+The Triumphal Entry reminds us to welcome Jesus with praise and to recognize His kingdom as one marked by humility and peace.`,
+    reflection: "Make room for Jesus in your heart. What does honoring Him look like today?",
+    question: "What animal did Jesus ride into Jerusalem?",
+    options: ["A horse", "A donkey", "A camel", "A chariot"],
+    answer: 1
+  },
+  {
+    id: 19,
+    title: "The Crucifixion",
+    reference: "Luke 23",
+    image: "crucifixion.png",
+    description: "Jesus gives His life on the cross for the forgiveness of sins.",
+    fullStory: `Jesus was brought before the authorities and accused of wrongdoing. Though Pilate found no basis for the charges that deserved death, the crowd demanded that Jesus be crucified.
+
+Jesus was led away to a place called the Skull, also known as Golgotha. There He was crucified between two criminals. Even while suffering, Jesus prayed for those who were putting Him to death, asking the Father to forgive them.
+
+One of the criminals mocked Jesus, but the other recognized his own wrongdoing and asked Jesus to remember him when He came into His kingdom. Jesus promised that he would be with Him in paradise.
+
+Darkness came over the land, and Jesus gave His life. The curtain of the temple was torn in two. A centurion who witnessed what happened praised God and acknowledged Jesus' innocence.
+
+Joseph of Arimathea received permission to take Jesus' body. He wrapped it in linen and placed it in a tomb cut into the rock.
+
+The crucifixion reveals the depth of Jesus' love and the sacrifice He made for the forgiveness of sins.`,
+    reflection: "Remember the depth of Jesus’ love and the grace offered through Him.",
+    question: "Where was Jesus crucified?",
+    options: ["Bethlehem", "Mount Sinai", "Golgotha", "Jericho"],
+    answer: 2
+  },
+  {
+    id: 20,
+    title: "The Resurrection",
+    reference: "Luke 24:1–12",
+    image: "resurrection.png",
+    description: "Jesus rises from the dead, bringing hope and the promise of new life.",
+    fullStory: `After Jesus was crucified, His body was placed in a tomb. The women who had followed Him prepared spices and waited until the Sabbath had passed.
+
+Early on the first day of the week, they went to the tomb. They found that the stone had been rolled away, and when they entered, they did not find Jesus' body.
+
+While they were wondering what had happened, two men in dazzling clothes appeared. The women were frightened, but the messengers reminded them of Jesus' words: the Son of Man would be delivered into the hands of sinners, be crucified, and rise again on the third day.
+
+The women remembered His words and returned to tell the apostles. At first, their message seemed unbelievable to the disciples. Peter ran to the tomb, looked inside, and saw the linen cloths. He went away wondering what had happened.
+
+The resurrection is the heart of the Christian hope. Jesus is alive, and His victory over death offers the promise of new life. It reminds us that darkness and death do not have the final word.`,
+    reflection: "The resurrection reminds us that hope is alive in Jesus. Where do you need renewed hope?",
+    question: "What did the women discover at the tomb?",
+    options: ["The stone was rolled away and the tomb was empty", "The tomb was sealed", "The disciples were waiting inside", "The tomb had moved"],
+    answer: 0
+  }
+];
 
     const STORAGE_KEY = "gloryNestBibleJourney";
 

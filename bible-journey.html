@@ -628,7 +628,9 @@
           id="detail-image"
         >
 
-        <p>${escapeHTML(story.description)}</p>
+        <div class="full-story">
+  ${escapeHTML(story.fullStory || story.description)}
+</div>
 
         <div class="reflection">
           <h3>🌿 Reflection</h3>

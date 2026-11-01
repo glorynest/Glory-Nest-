@@ -1,3 +1,4 @@
+
 const verses = [
   {
     id: "romans8",
@@ -72,6 +73,21 @@ const prayers = [
   }
 ];
 
+const hindiPrayers = [
+  {
+    title: "जब प्रलोभन कठिन लगे",
+    text: "हे प्रभु परमेश्वर, इस समय मैं स्वयं को कमजोर महसूस करता हूँ और प्रलोभन बहुत प्रबल है। मैं इसमें गिरना नहीं चाहता। मुझे अपनी सामर्थ्य दे। मेरी सहायता कर कि मैं उठकर इस प्रलोभन से दूर चला जाऊँ। इस इच्छा के स्थान पर मेरे मन को अपनी शांति से भर दे। यीशु के नाम में, आमीन।"
+  },
+  {
+    title: "एक नई शुरुआत के लिए",
+    text: "हे पिता, मैं अपना अतीत आपके सामने लाता हूँ और कुछ भी नहीं छिपाता। आपकी दया के लिए धन्यवाद। मेरी सहायता कर कि मैं बीते हुए कल को वहीं छोड़ दूँ और उस नए जीवन में आगे बढ़ूँ जो आपने मुझे दिया है। यीशु के नाम में, आमीन।"
+  },
+  {
+    title: "आज के लिए सामर्थ्य",
+    text: "हे प्रभु, जब मैं कमजोर महसूस करूँ, तो मुझे याद दिला कि मुझे अकेले संघर्ष नहीं करना है। अगले कदम के लिए साहस, इस पल के लिए शांति और सही चुनाव करने की सामर्थ्य दे। आमीन।"
+  }
+];
+
 const grid = document.querySelector("#verseGrid");
 const filters = document.querySelector("#filters");
 const search = document.querySelector("#search");
@@ -86,6 +102,25 @@ let currentLanguage = localStorage.getItem(languageKey) || "en";
 const isHindi = () => currentLanguage === "hi";
 const verseText = v => isHindi() ? v.hindi : v.text;
 
+const saved = () => JSON.parse(localStorage.getItem(favKey) || "[]");
+
+const setSaved = a => {
+  localStorage.setItem(favKey, JSON.stringify(a));
+  renderFavorites();
+  updateCount();
+};
+
+function updateCount() {
+  document.querySelector("#favCount").textContent = saved().length;
+}
+
+function toast(t) {
+  const x = document.querySelector("#toast");
+  x.textContent = t;
+  x.classList.add("show");
+  setTimeout(() => x.classList.remove("show"), 1800);
+}
+
 function updateLanguageHeadings() {
   document.documentElement.lang = currentLanguage;
 
@@ -98,32 +133,16 @@ function updateLanguageHeadings() {
   };
 
   document.querySelectorAll("h2").forEach(heading => {
-    const englishText = heading.dataset.englishText || heading.textContent.trim();
+    const englishText =
+      heading.dataset.englishText || heading.textContent.trim();
 
     if (headings[englishText]) {
       heading.dataset.englishText = englishText;
-      heading.textContent = isHindi() ? headings[englishText] : englishText;
+      heading.textContent = isHindi()
+        ? headings[englishText]
+        : englishText;
     }
   });
-}
-
-function updateCount() {
-  document.querySelector("#favCount").textContent = saved().length;
-}
-
-const saved = () => JSON.parse(localStorage.getItem(favKey) || "[]");
-
-const setSaved = a => {
-  localStorage.setItem(favKey, JSON.stringify(a));
-  renderFavorites();
-  updateCount();
-};
-
-function toast(t) {
-  const x = document.querySelector("#toast");
-  x.textContent = t;
-  x.classList.add("show");
-  setTimeout(() => x.classList.remove("show"), 1800);
 }
 
 function renderFilters() {
@@ -162,7 +181,11 @@ function renderVerses() {
         <span class="ref">${v.ref}</span>
       </article>
     `).join("")
-    : `<p class="empty">No verses found. Try another word or topic.</p>`;
+    : `<p class="empty">${
+        isHindi()
+          ? "कोई वचन नहीं मिला। कोई दूसरा शब्द या विषय खोजें।"
+          : "No verses found. Try another word or topic."
+      }</p>`;
 
   grid.querySelectorAll("[data-save]").forEach(b => {
     b.onclick = () => toggleFavorite(b.dataset.save);
@@ -190,7 +213,9 @@ function renderFavorites() {
 
   if (!f.length) {
     box.innerHTML = `<p class="empty">${
-      isHindi() ? "आपके सहेजे गए वचन यहाँ दिखाई देंगे।" : "Your saved verses will appear here."
+      isHindi()
+        ? "आपके सहेजे गए वचन यहाँ दिखाई देंगे।"
+        : "Your saved verses will appear here."
     }</p>`;
     return;
   }
@@ -217,9 +242,11 @@ function renderFavorites() {
 }
 
 function renderPrayers() {
-  document.querySelector("#prayerGrid").innerHTML = prayers.map(p => `
+  const prayerList = isHindi() ? hindiPrayers : prayers;
+
+  document.querySelector("#prayerGrid").innerHTML = prayerList.map(p => `
     <article class="prayer">
-      <p class="eyebrow">Prayer</p>
+      <p class="eyebrow">${isHindi() ? "प्रार्थना" : "Prayer"}</p>
       <h3>${p.title}</h3>
       <p>${p.text}</p>
     </article>
@@ -243,6 +270,7 @@ languageToggle.onclick = () => {
 
   updateLanguageHeadings();
   renderVerses();
+  renderPrayers();
   renderFavorites();
   daily();
 };

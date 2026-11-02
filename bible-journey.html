@@ -5,246 +5,524 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bible Journey | Glory Nest</title>
 
-  <style>
-    :root {
-      --green: #315b43;
-      --green-light: #e8f0e8;
-      --cream: #faf7ef;
-      --text: #26352b;
-      --muted: #68766b;
-      --white: #ffffff;
-      --border: #dce5dc;
-    }
+ <style>
+:root {
+  --green: #28543b;
+  --green-dark: #173d2b;
+  --green-light: #e8efe3;
+  --cream: #fbf8ef;
+  --text: #25392d;
+  --muted: #6c796e;
+  --white: #fffefa;
+  --border: #e4e1d5;
+  --gold: #d6b76d;
+}
 
-    * { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header {
-      text-align: center;
-      padding: 48px 20px 35px;
-      color: white;
-      background: linear-gradient(135deg, #315b43, #719879);
-    }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  line-height: 1.6;
+}
 
-    header h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 5vw, 3rem);
-    }
+/* Header */
+header {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 230px;
+  padding: 70px 20px 45px;
+  text-align: center;
+  color: var(--green-dark);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.25),
+      rgba(255,250,230,.15)
+    ),
+    linear-gradient(
+      155deg,
+      transparent 0 43%,
+      #a8c59a 43.2% 58%,
+      transparent 58.2%
+    ),
+    linear-gradient(
+      25deg,
+      transparent 0 45%,
+      #6d966d 45.2% 65%,
+      transparent 65.2%
+    ),
+    linear-gradient(
+      160deg,
+      transparent 0 53%,
+      #315b43 53.2% 75%,
+      transparent 75.2%
+    ),
+    linear-gradient(
+      180deg,
+      #cce4e8 0%,
+      #f9e8c5 80%,
+      #e9edcf 100%
+    );
+}
 
-    header p {
-      max-width: 650px;
-      margin: auto;
-      opacity: .95;
-    }
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -40px;
+  width: 70%;
+  height: 150px;
+  border-radius: 50% 50% 0 0;
+  pointer-events: none;
+}
 
-    main {
-      width: min(1100px, 92%);
-      margin: 30px auto 60px;
-    }
+header::before {
+  left: -15%;
+  background: linear-gradient(145deg, #a6c18e, #426f4c);
+  transform: rotate(-8deg);
+}
 
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
-    }
+header::after {
+  right: -18%;
+  bottom: -50px;
+  background: linear-gradient(215deg, #b9cda0, #537b57);
+  transform: rotate(7deg);
+}
 
-    input, select, textarea, button {
-      font: inherit;
-    }
+header h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  color: #16442f;
+}
 
-    input, select, textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: white;
-      color: var(--text);
-    }
+header p {
+  max-width: 750px;
+  margin: 12px auto 0;
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #234632;
+}
 
-    .toolbar input { flex: 2 1 250px; }
-    .toolbar select { flex: 1 1 180px; }
+/* Brand */
+.brand {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: white;
+  text-shadow: 0 2px 8px #173f2d80;
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-style: italic;
+}
 
-    .progress {
-      padding: 14px 18px;
-      background: var(--green-light);
-      border-radius: 12px;
-      margin-bottom: 22px;
-    }
+.brand-mark {
+  font-size: 2rem;
+}
 
-    .progress-track {
-      height: 9px;
-      background: #d1dfd2;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-top: 8px;
-    }
+.home-link {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  padding: 8px 17px;
+  color: white;
+  background: var(--green);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .progress-fill {
-      height: 100%;
-      width: 0;
-      background: var(--green);
-      transition: width .25s;
-    }
+/* Main content */
+main {
+  width: min(1500px, 94%);
+  margin: 25px auto 40px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
-    }
+/* Search and filter */
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(230px, .95fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
 
-    .story-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px #26352b0b;
-    }
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
 
-    .story-card img {
-      display: block;
-      width: 100%;
-      height: 175px;
-      object-fit: cover;
-      background: var(--green-light);
-    }
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--text);
+  box-shadow: 0 2px 7px #20382b0b;
+}
 
-    .card-content { padding: 17px; }
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #a8c59a;
+  border-color: var(--green);
+}
 
-    .card-content h2 {
-      margin: 0 0 5px;
-      font-size: 1.2rem;
-    }
+/* Progress */
+.progress {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  background: #edf2e6;
+  border: 1px solid #e0e8d9;
+  border-radius: 13px;
+  font-size: .9rem;
+}
 
-    .reference {
-      color: var(--green);
-      font-weight: bold;
-      font-size: .9rem;
-    }
+.progress-track {
+  height: 7px;
+  margin-top: 7px;
+  background: #d8e2d0;
+  border-radius: 20px;
+  overflow: hidden;
+}
 
-    .card-content p {
-      color: var(--muted);
-      margin: 10px 0 15px;
-    }
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #315b43, #8aab71);
+  transition: width .25s;
+}
 
-    button {
-      border: 0;
-      border-radius: 9px;
-      padding: 11px 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+/* Story cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
 
-    button:focus-visible {
-      outline: 3px solid #9fc4a4;
-      outline-offset: 2px;
-    }
+.story-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid #e3e0d4;
+  border-radius: 16px;
+  box-shadow: 0 3px 9px #26352b12;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
 
-    .primary {
-      background: var(--green);
-      color: white;
-    }
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 20px #26352b1c;
+}
 
-    .secondary {
-      background: var(--green-light);
-      color: var(--green);
-    }
+.story-card img {
+  display: block;
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  background: var(--green-light);
+  border-radius: 0;
+}
 
-    .story-card button { width: 100%; }
+.card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 13px 14px;
+}
 
-    #detail {
-      display: none;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: clamp(18px, 4vw, 30px);
-      margin-bottom: 25px;
-    }
+.card-content h2 {
+  margin: 4px 0 5px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: #17452f;
+}
 
-    #detail img {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-      border-radius: 12px;
-      background: var(--green-light);
-      margin: 15px 0;
-    }
+.reference {
+  color: #4f7058;
+  font-size: .8rem;
+  font-weight: bold;
+}
 
-    #detail h2 { margin-top: 10px; }
+.card-content p {
+  flex: 1;
+  margin: 7px 0 13px;
+  color: #536256;
+  font-size: .85rem;
+  line-height: 1.45;
+}
 
-    .reflection, .quiz-box {
-      padding: 18px;
-      border-radius: 12px;
-      background: #f3f7f1;
-      margin: 20px 0;
-    }
+/* Buttons */
+button {
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    filter .15s ease,
+    transform .15s ease;
+}
 
-    .quiz-option {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 12px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      cursor: pointer;
-    }
+button:hover {
+  filter: brightness(1.06);
+}
 
-    .quiz-option input {
-      width: auto;
-      margin-right: 8px;
-    }
+button:active {
+  transform: scale(.98);
+}
 
-    #quiz-feedback {
-      font-weight: bold;
-      margin-top: 12px;
-    }
+button:focus-visible {
+  outline: 3px solid #9fc4a4;
+  outline-offset: 2px;
+}
 
-    .detail-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
+.primary {
+  background: var(--green);
+  color: white;
+}
 
-    .muted {
-      color: var(--muted);
-      font-size: .9rem;
-      margin-top: 25px;
-      text-align: center;
-    }
+.secondary {
+  background: var(--green-light);
+  color: var(--green);
+}
 
-    .empty {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 35px;
-      color: var(--muted);
-      background: white;
-      border-radius: 12px;
-    }
+.story-card button {
+  align-self: flex-end;
+  min-width: 90px;
+  padding: 8px 14px;
+  font-size: .83rem;
+}
 
-    @media (max-width: 500px) {
-      header { padding: 35px 16px; }
-      .toolbar { display: grid; }
-      .detail-actions button { width: 100%; }
-    }
-  </style>
+/* Story detail */
+#detail {
+  display: none;
+  padding: clamp(18px, 4vw, 30px);
+  margin-bottom: 25px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px #26352b0b;
+}
+
+#detail img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: var(--green-light);
+  margin: 15px 0;
+}
+
+#detail h2 {
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  color: var(--green-dark);
+}
+
+.full-story {
+  white-space: pre-line;
+  font-size: 1.03rem;
+  line-height: 1.85;
+  color: #34483a;
+}
+
+/* Reflection and quiz */
+.reflection,
+.quiz-box {
+  padding: 18px;
+  margin: 20px 0;
+  background: #f1f5eb;
+  border: 1px solid #e4eadc;
+  border-radius: 14px;
+}
+
+.quiz-option {
+  display: block;
+  padding: 11px 13px;
+  margin: 10px 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.quiz-option input {
+  width: auto;
+  margin-right: 8px;
+}
+
+#quiz-feedback {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* Footer */
+.muted {
+  margin-top: 35px;
+  color: var(--muted);
+  font-size: .88rem;
+  text-align: center;
+}
+
+.muted::before {
+  content: "♥   Grow in Faith       ✦       Walk Closer to God       ✦       Find Peace in His Word";
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 35px;
+  color: var(--muted);
+  text-align: center;
+  background: var(--white);
+  border-radius: 12px;
+}
+
+/* Responsive layout */
+@media (max-width: 1150px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .story-card img {
+    height: 135px;
+  }
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .brand {
+    left: 14px;
+    font-size: 1.05rem;
+  }
+
+  .home-link {
+    right: 14px;
+  }
+
+  header {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    min-height: 0;
+    padding: 75px 16px 30px;
+  }
+
+  .brand {
+    top: 12px;
+  }
+
+  .home-link {
+    top: 12px;
+    padding: 7px 12px;
+    font-size: .85rem;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .story-card img {
+    height: 110px;
+  }
+
+  .card-content {
+    padding: 9px;
+  }
+
+  .card-content h2 {
+    font-size: .93rem;
+  }
+
+  .card-content p {
+    font-size: .78rem;
+  }
+
+  .detail-actions button {
+    width: 100%;
+  }
+
+  .muted::before {
+    content: "♥  Grow in Faith  •  Walk Closer to God";
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-card img {
+    height: 160px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <h1>🌿 Bible Journey</h1>
-    <p>
-      Walk through Scripture, one story at a time.
-      Read, reflect, and discover how God’s Word speaks into everyday life.
-    </p>
-  </header>
+<header>
+  <div class="brand">
+    <span class="brand-mark">🕊</span>
+    <span>Glory Nest<br><small>Rest in the Word</small></span>
+  </div>
+
+  <a class="home-link" href="index.html">⌂ Home</a>
+
+  <h1>🌿 Bible Journey</h1>
+
+  <p>
+    Walk through Scripture, one story at a time.
+    Read, reflect, and discover how God’s Word speaks into everyday life.
+  </p>
+</header>
 
   <main>
     <div class="progress">

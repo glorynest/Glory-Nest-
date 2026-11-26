@@ -1166,7 +1166,17 @@ ${story.audio ? `
       detailImage.onerror = function () {
         this.style.display = "none";
       };
+const storyAudio = document.getElementById("story-audio");
+const replayAudioButton = document.getElementById("replay-story-audio");
 
+if (storyAudio && replayAudioButton) {
+  replayAudioButton.addEventListener("click", () => {
+    storyAudio.currentTime = 0;
+    storyAudio.play().catch(() => {
+      alert("Audio could not play. Please press the Play button.");
+    });
+  });
+}
       document.getElementById("back-button").addEventListener("click", closeStory);
 
       document.getElementById("save-reflection").addEventListener("click", () => {

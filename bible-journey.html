@@ -1088,6 +1088,8 @@ The resurrection is the heart of the Christian hope. Jesus is alive, and His vic
     }
 
     function openStory(storyId) {
+      const currentAudio = document.getElementById("story-audio");
+if (currentAudio) currentAudio.pause();
       const story = stories.find(item => item.id === storyId);
       if (!story) return;
 
@@ -1220,12 +1222,14 @@ if (storyAudio && replayAudioButton) {
       detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    function closeStory() {
-      detailSection.style.display = "none";
-      detailSection.innerHTML = "";
-      storiesSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+function closeStory() {
+  const currentAudio = document.getElementById("story-audio");
+  if (currentAudio) currentAudio.pause();
 
+  detailSection.style.display = "none";
+  detailSection.innerHTML = "";
+  storiesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
     function escapeHTML(value) {
       return String(value).replace(/[&<>"']/g, character => {
         const replacements = {

@@ -1111,7 +1111,21 @@ The resurrection is the heart of the Christian hope. Jesus is alive, and His vic
         <div class="full-story">
   ${escapeHTML(story.fullStory || story.description)}
 </div>
+${story.audio ? `
+  <div class="story-audio">
+    <h3>🎧 सुनिए यह बाइबल कहानी</h3>
+    <p>मेरे प्यारे भाईयों और बहनों, आइए इस कहानी को सुनते हैं। ❤️</p>
 
+    <audio id="story-audio" controls preload="none">
+      <source src="${escapeHTML(story.audio)}" type="audio/mpeg">
+      Your browser does not support audio playback.
+    </audio>
+
+    <button class="secondary" id="replay-story-audio" type="button">
+      ↻ Replay Story
+    </button>
+  </div>
+` : ""}
         <div class="reflection">
           <h3>🌿 Reflection</h3>
           <p>${escapeHTML(story.reflection)}</p>
